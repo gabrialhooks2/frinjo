@@ -443,6 +443,42 @@ const TOOLS: Tool[] = [
     desc: "Your Big Three from your birth date, time and city: Sun, Moon and Rising signs with exact degrees, calculated in your browser from real astronomical positions. Free, no sign-up.",
   },
   {
+    name: "Marla to Square Feet Converter",
+    href: "/marla-to-square-feet-converter",
+    tag: "Land · Pakistan",
+    desc: "Convert Marla, Kanal, square feet, square yards (gaj), square metres, acres and sarsai at the 272.25 revenue, 225 society and 250 CDA standards — plus plot dimensions and price per Marla. Free, no sign-up.",
+  },
+  {
+    name: "Roof Pitch Calculator",
+    href: "/roof-pitch-calculator",
+    tag: "Construction · Roofing",
+    desc: "Rise and run to pitch (x/12), angle in degrees, slope %, pitch multiplier, rafter length and roof area — with the full 1/12 to 12/12 pitch chart and typical uses. Free, no sign-up.",
+  },
+  {
+    name: "Fancy Text Generator",
+    href: "/fancy-text-generator",
+    tag: "Text · Social",
+    desc: "Type once and copy 26+ fancy Unicode text styles — bold, script, gothic, bubble, small caps and more — for Instagram bios, TikTok and Discord. Click to copy, nothing stored.",
+  },
+  {
+    name: "Secret Santa Generator",
+    href: "/secret-santa-generator",
+    tag: "Seasonal · Christmas",
+    desc: "Add names, set exclusions for couples, and draw matches nobody can peek at — pass-the-phone reveal or a private link per person. Runs entirely in your browser, nothing stored.",
+  },
+  {
+    name: "Coast FIRE Calculator",
+    href: "/coast-fire-calculator",
+    tag: "Finance · FIRE",
+    desc: "Your Coast FIRE number, full FIRE number, progress % and the age you can stop contributing and let compounding finish the job — all in today's dollars. Free, no sign-up.",
+  },
+  {
+    name: "Tola to Gram Converter",
+    href: "/tola-to-gram-converter",
+    tag: "Gold · Pakistan",
+    desc: "Convert tola, gram, masha, ratti and troy ounce (1 tola = 11.6638 g), turn a per-tola gold rate into per-gram prices, and check pure gold content by karat. Free, no sign-up.",
+  },
+  {
     name: "Temp Mail",
     href: "https://tempmaill.tech",
     external: true,
