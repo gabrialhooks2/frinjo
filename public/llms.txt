@@ -1,12 +1,12 @@
 # WebStore Pro (Frinjo)
 
-> Ecommerce website developer — online stores that sell. Custom websites for Pakistani businesses with Cash on Delivery, JazzCash/Easypaisa, and WhatsApp ordering.
+> Full Stack web developer — websites and web applications that sell. Custom websites for businesses with Cash on Delivery, JazzCash/Easypaisa, and WhatsApp ordering.
 
-WebStore Pro (https://frinjo.me, also known as Frinjo) is a web development service building ecommerce websites and online stores for small businesses, focused on the Pakistani market. Every website is mobile responsive and includes a shopping cart, checkout, and an admin panel on Business and Pro packages.
+WebStore Pro (https://frinjo.me, also known as Frinjo) is a Full Stack web development service building websites, online stores and web applications for small businesses, focused on the Pakistani market and clients worldwide. Every website is mobile responsive and includes a shopping cart, checkout, and an admin panel on Business and Pro packages.
 
 ## Pages
 
-- [Home — Ecommerce Website Developer](https://frinjo.me/)
+- [Home — Full Stack Web Developer](https://frinjo.me/)
 - [Services](https://frinjo.me/services)
 - [Pricing](https://frinjo.me/pricing)
 - [Portfolio](https://frinjo.me/portfolio)
@@ -151,7 +151,8 @@ WebStore Pro (https://frinjo.me, also known as Frinjo) is a web development serv
 
 ## Services
 
-- Ecommerce Website — full online store with cart and checkout
+- Full Stack Web Development — complete websites and web applications, end to end
+- Online Store — full ecommerce store with cart and checkout
 - Business Website — company/service websites
 - Admin Panel — manage products, prices, and orders yourself (no coding)
 - Payment Integration — Cash on Delivery, JazzCash, Easypaisa, Stripe, PayPal, Binance Pay, Payoneer, USDT
@@ -168,7 +169,7 @@ WebStore Pro (https://frinjo.me, also known as Frinjo) is a web development serv
 
 - Website: https://frinjo.me
 - Brand: WebStore Pro (Frinjo)
-- Focus: ecommerce websites for Pakistani small businesses
+- Focus: Full Stack websites and web applications for small businesses (Pakistan focus, clients worldwide)
 - Tech: mobile-responsive websites (Next.js), tested on phones, tablets, and desktops
 - Payments supported: Cash on Delivery, JazzCash, Easypaisa, Stripe, PayPal, WhatsApp ordering, Binance Pay, Payoneer, USDT
 - Admin: Business and Pro packages include an admin panel to add products, change prices, and manage orders with zero coding

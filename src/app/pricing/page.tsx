@@ -36,6 +36,15 @@ const pricingFaqJsonLd = {
   })),
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://frinjo.me/" },
+    { "@type": "ListItem", position: 2, name: "Pricing", item: "https://frinjo.me/pricing" },
+  ],
+};
+
 export default function PricingPage() {
   const waHref = `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
     "Hi, I'm interested in a website package (from $80). Please share the details."
@@ -43,6 +52,7 @@ export default function PricingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingFaqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <section className="bg-orange-50 dot-grid py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-700 mb-3">Packages</p>

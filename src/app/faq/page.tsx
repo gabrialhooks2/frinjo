@@ -35,6 +35,15 @@ const faqJsonLd = {
   })),
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://frinjo.me/" },
+    { "@type": "ListItem", position: 2, name: "FAQ", item: "https://frinjo.me/faq" },
+  ],
+};
+
 export default function FaqPage() {
   const waHref = `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent("Hi! I have a question about your website packages.")}`;
   return (
@@ -42,6 +51,10 @@ export default function FaqPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <section className="bg-orange-50 dot-grid py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4">
