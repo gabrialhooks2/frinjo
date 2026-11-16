@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SectionHead, Icon, btnPrimary } from "@/components/ui";
 import HourlySalary from "../HourlySalary";
-import { POPULAR_RATES, rateSlug, breakdown, money } from "../rates";
+import { POPULAR_RATES, rateSlug, breakdown, money, estimateNet } from "../rates";
 
 export function generateStaticParams() {
   return POPULAR_RATES.map((r) => ({ rate: rateSlug(r) }));
@@ -47,6 +47,7 @@ export default async function RatePage({ params }: { params: Promise<{ rate: str
   const b = breakdown(r, 40, 52);
   const b50 = breakdown(r, 40, 50);
   const b37 = breakdown(r, 37.5, 52);
+  const net = estimateNet(b.annual);
 
   const appJsonLd = {
     "@context": "https://schema.org",
@@ -77,6 +78,8 @@ export default async function RatePage({ params }: { params: Promise<{ rate: str
     ["Every two weeks", b.biweekly],
     ["Per month", b.monthly],
     ["Per year", b.annual],
+    ["Per month after tax (est.)", net.monthly],
+    ["Per year after tax (est.)", net.annual],
   ];
 
   const FAQS: [string, string][] = [
@@ -87,6 +90,10 @@ export default async function RatePage({ params }: { params: Promise<{ rate: str
     [
       `How much is $${r} an hour with overtime?`,
       `At time-and-a-half, overtime pays ${money(r * 1.5)} an hour; double time pays ${money(r * 2)} an hour. Five overtime hours a week at time-and-a-half add ${money(r * 1.5 * 5 * 52)} a year before tax on top of the ${money(b.annual)} base — which is why the same hourly rate can mean very different annual pay.`,
+    ],
+    [
+      `How much is $${r} an hour after taxes?`,
+      `About ${money(net.annual)} a year — ${money(net.monthly)} a month — in take-home pay, an effective tax rate of roughly ${net.effectiveRate}%. That estimate uses 2026 federal income tax for a single filer taking the standard deduction, plus FICA (Social Security and Medicare, 7.65%). State income tax, if your state has one, and any benefit deductions come off on top of that, so your exact net depends on where you live and how you file.`,
     ],
     [
       `Is $${r} an hour before or after tax?`,
@@ -144,6 +151,11 @@ export default async function RatePage({ params }: { params: Promise<{ rate: str
               </div>
             ))}
           </div>
+          <p className="mt-4 text-sm text-stone-500">
+            After-tax rows are estimates: 2026 federal income tax (single filer, standard deduction) plus FICA
+            at 7.65%. State tax is not included, so your real take-home pay will be a little lower in most states.
+            The formula behind every gross figure on this page: ${r} × 40 hours × 52 weeks = {money(b.annual)} a year.
+          </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl bg-stone-50 border border-stone-100 p-6">
               <p className="font-display text-xl font-bold text-stone-900">{money(b50.annual)} / year</p>

@@ -13,7 +13,7 @@ const LANDING_VS_WEBSITE_BLOCKS: string[] = [
 
   "A landing page is a single page with one job: convert the visitor. No menu, no distractions — just a headline, the offer, proof (reviews, photos), and a big order button. It is the page your Facebook or TikTok ad should point to.",
 
-  "A full website is a set of pages: home, products or services, about, contact, and often a blog. Visitors can browse, compare, and learn. Google can index every page, which means every page is a chance to be found in search.",
+  "A full website is a set of pages: home, products or services, about, contact, and often a blog. Visitors can browse, compare, and learn. Google can index every page, which means every page is a chance to be found in search. To check whether Google and AI tools can actually read those pages properly, run them through our free [SEO Agent Kit](/seo-agent-kit).",
 
   "## Landing page vs full website: side-by-side",
 
@@ -187,7 +187,7 @@ const WEB_HOSTING_BLOCKS: string[] = [
 
   "First, renewal price, not the intro price. Almost every international host sells year one cheap and renews at two to four times the cost. Multiply the renewal rate by three years and compare that number — that is your real cost.",
 
-  "Second, server location. A server in Singapore or Mumbai loads noticeably faster for Pakistani visitors than one in the US or Europe. When a provider lists data centers, pick the closest one to Pakistan — it directly affects your Core Web Vitals and Google rankings.",
+  "Second, server location. A server in Singapore or Mumbai loads noticeably faster for Pakistani visitors than one in the US or Europe. When a provider lists data centers, pick the closest one to Pakistan — it directly affects your Core Web Vitals and Google rankings. Once your hosting is fast, check the rest of your setup with our free [SEO Agent Kit](/seo-agent-kit) — an open-source toolkit that audits your site the way AI search tools read it.",
 
   "Third, payment and billing. International hosts bill in USD, so add 3–5% in conversion fees plus whatever your bank charges. Local hosts that accept JazzCash, Easypaisa, or bank transfer save you that friction — and you get support in your timezone, in a language your team speaks.",
 
