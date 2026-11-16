@@ -5,7 +5,7 @@ import { SectionHead, Icon, btnPrimary, btnOutline } from "@/components/ui";
 
 const TITLE = "Discount Calculator — Sale Price, Stacked % Off & Tax";
 const DESCRIPTION =
-  "Free discount calculator: find the sale price and savings from any % off, stack two discounts correctly, add sales tax after discount, and reverse-check % off or original price.";
+  "Calculate any discount % off instantly: enter the original price to see the sale price, your savings, stacked discounts and tax. Free, no sign-up.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -51,6 +51,10 @@ const breadcrumbJsonLd = {
 };
 
 const FAQS: [string, string][] = [
+  [
+    "How do you calculate a discount?",
+    "Discount amount = original price × discount % ÷ 100. Sale price = original price − discount amount. Example: 20% off $80 → discount = 80 × 0.20 = $16, so the sale price is $64. Enter any price and % off in the calculator above and it shows the discount, the sale price and the total with tax instantly.",
+  ],
   [
     "How do I calculate a discount price?",
     "Multiply the price by (1 − discount ÷ 100). For 25% off $120: 120 × 0.75 = $90, so you save $30. To do it mentally, find 10% (move the decimal), then scale: 25% is two 10%s plus a 5% (half of 10%).",

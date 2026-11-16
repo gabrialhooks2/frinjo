@@ -61,6 +61,10 @@ const FAQS: [string, string][] = [
     "Con el sistema francés (el más usado en préstamos personales): cuota = capital × r(1+r)^n ÷ ((1+r)^n − 1), donde r es la tasa mensual (tasa anual ÷ 100 ÷ 12) y n el número de meses. Ejemplo: 10,000 al 12% anual durante 12 meses → r = 0.01, cuota = 888.49. Al principio pagas más intereses que capital; al final, al revés, pero la cuota no cambia.",
   ],
   [
+    "¿Cuánto pagaré al mes por un préstamo de 10,000?",
+    "Depende de la tasa y del plazo. Al 12% anual a 12 meses pagarás 888.49 al mes, con 661.85 de intereses en total (costo total del préstamo: 10,661.85). Si alargas el plazo a 36 meses, la cuota baja a 332.14 al mes, pero los intereses suben a 1,957.15. Introduce tu monto, tu tasa y tu plazo en la calculadora de arriba y obtendrás tu cuota exacta y el interés total antes de firmar.",
+  ],
+  [
     "¿Qué diferencia hay entre un préstamo y una hipoteca?",
     "La mecánica es la misma —por eso esta calculadora comparte motor con la de hipotecas—, pero cambian el plazo, la tasa y la garantía: un préstamo personal dura meses o pocos años, no exige garantía y suele tener tasas más altas; una hipoteca dura décadas, está garantizada por la vivienda y tiene tasas menores. Para una vivienda usa la calculadora de hipoteca, que suma entrada, impuestos y seguros.",
   ],

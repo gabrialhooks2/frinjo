@@ -188,7 +188,9 @@ export default function CalculadoraHipotecaPage() {
             <strong className="text-white">calculadora de IVA</strong> cubre España, México y toda
             Latinoamérica con facturas multilínea, retenciones y total en letra. Y para tus pruebas y
             registros, el <strong className="text-white">generador de identidad falsa</strong> crea
-            perfiles completos en español sin límite diario.
+            perfiles completos en español sin límite diario. Y si el gasto no es una casa sino un
+            crédito personal, la <strong className="text-white">calculadora de préstamos</strong> te
+            da la cuota mensual y los intereses totales de cualquier préstamo antes de firmar.
           </p>
           <p className="mt-8 text-center text-sm text-stone-400">
             <Link href="/es/calculadora-de-iva" className="font-semibold text-orange-400 hover:text-orange-300">
@@ -197,6 +199,10 @@ export default function CalculadoraHipotecaPage() {
             ·{" "}
             <Link href="/es/generador-de-identidad-falsa" className="font-semibold text-orange-400 hover:text-orange-300">
               Generador de identidad falsa
+            </Link>{" "}
+            ·{" "}
+            <Link href="/es/calculadora-de-prestamos" className="font-semibold text-orange-400 hover:text-orange-300">
+              Calculadora de préstamos
             </Link>{" "}
             ·{" "}
             <Link href="/tools" className="font-semibold text-orange-400 hover:text-orange-300">
