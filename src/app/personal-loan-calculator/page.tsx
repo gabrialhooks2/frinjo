@@ -195,6 +195,10 @@ export default function PersonalLoanPage() {
               Amortization schedule
             </Link>{" "}
             ·{" "}
+            <Link href="/car-loan-interest-deduction-calculator" className="font-semibold text-orange-400 hover:text-orange-300">
+              Car loan interest deduction
+            </Link>{" "}
+            ·{" "}
             <Link href="/tools" className="font-semibold text-orange-400 hover:text-orange-300">
               All tools
             </Link>

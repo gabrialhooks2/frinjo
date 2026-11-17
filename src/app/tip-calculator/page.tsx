@@ -144,7 +144,8 @@ export default function TipCalculatorPage() {
             </a>{" "}
             · See <Link href="/services" className="text-orange-400 font-semibold hover:underline">my services</Link> — or
             explore the <Link href="/discount-calculator" className="text-orange-400 font-semibold hover:underline">Discount Calculator</Link>,{" "}
-            <Link href="/percentage-calculator" className="text-orange-400 font-semibold hover:underline">Percentage Calculator</Link> and{" "}
+            <Link href="/percentage-calculator" className="text-orange-400 font-semibold hover:underline">Percentage Calculator</Link>,{" "}
+            <Link href="/no-tax-on-tips-calculator" className="text-orange-400 font-semibold hover:underline">No Tax on Tips Calculator</Link> and{" "}
             <Link href="/hourly-to-salary-calculator" className="text-orange-400 font-semibold hover:underline">Hourly to Salary Calculator</Link> — plus 100+ more free tools on the{" "}
             <Link href="/tools" className="text-orange-400 font-semibold hover:underline">tools hub</Link>.
           </p>

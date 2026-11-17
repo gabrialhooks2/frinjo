@@ -485,6 +485,24 @@ const TOOLS: Tool[] = [
     desc: "Convert tola, gram, masha, ratti and troy ounce (1 tola = 11.6638 g), turn a per-tola gold rate into per-gram prices, and check pure gold content by karat. Free, no sign-up.",
   },
   {
+    name: "No Tax on Overtime Calculator",
+    href: "/no-tax-on-overtime-calculator",
+    tag: "Tax · USA 2025–2028",
+    desc: "The new Schedule 1-A overtime deduction: your qualified FLSA premium, the $12,500/$25,000 cap, the MAGI phase-out, and the federal income tax it saves — FICA note included. Free, no sign-up.",
+  },
+  {
+    name: "No Tax on Tips Calculator",
+    href: "/no-tax-on-tips-calculator",
+    tag: "Tax · USA 2025–2028",
+    desc: "Deduct up to $25,000 of reported tips on Schedule 1-A: cap, MAGI phase-out and the federal income tax saved, worked out with the real 2026 brackets. Free, no sign-up.",
+  },
+  {
+    name: "Car Loan Interest Deduction Calculator",
+    href: "/car-loan-interest-deduction-calculator",
+    tag: "Tax · USA 2025–2028",
+    desc: "Up to $10,000 of interest on a new US-assembled car is deductible: run the six eligibility checks, then the cap and the $200-per-$1,000 phase-out. Free, no sign-up.",
+  },
+  {
     name: "Temp Mail",
     href: "https://tempmaill.tech",
     external: true,

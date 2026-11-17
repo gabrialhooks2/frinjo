@@ -133,7 +133,7 @@ export default function HourlySalaryPage() {
           </div>
           <p className="mt-5 text-sm text-stone-500">
             Prefer email? <a href="mailto:neilsonsmarry@gmail.com" className="font-semibold text-orange-700 hover:text-orange-800">neilsonsmarry@gmail.com</a>
-            {" "}· Or browse our <Link href="/services" className="font-semibold text-orange-700 hover:text-orange-800">services</Link> and <Link href="/tools" className="font-semibold text-orange-700 hover:text-orange-800">free tools</Link>.
+            {" "}· Or browse our <Link href="/services" className="font-semibold text-orange-700 hover:text-orange-800">services</Link>, the <Link href="/no-tax-on-overtime-calculator" className="font-semibold text-orange-700 hover:text-orange-800">no tax on overtime calculator</Link> and <Link href="/tools" className="font-semibold text-orange-700 hover:text-orange-800">free tools</Link>.
           </p>
         </div>
       </section>
