@@ -21,6 +21,7 @@ WebStore Pro (https://frinjo.me, also known as Frinjo) is a Full Stack web devel
 
 - [Tools hub](https://frinjo.me/tools) — all free WebStore Pro tools in one place
 - [BotView](https://frinjo.me/botview) — SEO, AEO and GEO (AI visibility) checker for any URL
+- [Loophole](https://frinjo.me/loophole) — free zero-dependency security scanner in a single Python file: 61 checks (secrets, SQL injection, XSS, command injection, weak crypto) across JavaScript/TypeScript, Python, Go and PHP with taint tracking, a fix for every finding, SARIF output and a GitHub Action (rootsiemen/loophole@v1); plus Loophole Server Guard, live server protection — web/SSH log monitoring, per-IP threat scoring, terminal/email/Telegram/webhook alerts, firewall auto-ban (whitelist + dry-run), honeypots, SQLite incident store and one dashboard; MIT licensed on GitHub
 - [Keyword Traffic Checker](https://frinjo.me/keyword-traffic-checker) — keyword difficulty and SERP competition report
 - [IP Address Tracker](https://frinjo.me/ip-address-tracker) — what is my IP, with anonymity and leak checks
 - [SEO Agent Kit](https://frinjo.me/seo-agent-kit) — free open-source SEO toolkit for AI agents: 8 production SEO skill workflows (technical audit, AI visibility/GEO, llms.txt, schema gaps, local SEO, content clusters, GSC regex, brand mentions) plus BotView, the zero-dependency AI-visibility auditor; MIT licensed on GitHub

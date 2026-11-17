@@ -47,6 +47,12 @@ const TOOLS: Tool[] = [
     desc: "Paste any URL and get SEO, AEO and GEO (AI visibility) scores out of 100 — every failing check and its fix, free.",
   },
   {
+    name: "Loophole",
+    href: "/loophole",
+    tag: "Security · Open source",
+    desc: "Free zero-dependency code security scanner — 61 checks for secrets, injection, XSS and weak crypto in JavaScript, Python, Go and PHP, plus Server Guard: live server protection with threat scoring, alarms and firewall auto-ban.",
+  },
+  {
     name: "Keyword Traffic Checker",
     href: "/keyword-traffic-checker",
     tag: "Keyword research",

@@ -129,6 +129,7 @@ Just your business name, logo (if you have one), product list with prices and ph
 - https://frinjo.me/automations
 - https://frinjo.me/seo-agent-kit — SEO Agent Kit: free open-source SEO toolkit for AI agents — 8 production SEO skill workflows (technical audit, AI visibility/GEO, llms.txt, schema gaps, local SEO, content clusters, GSC regex, brand mentions) plus BotView, the zero-dependency AI-visibility auditor; MIT licensed on GitHub
 - https://frinjo.me/botview
+- https://frinjo.me/loophole — Loophole: free zero-dependency security scanner (single Python file, 61 checks, taint tracking, SARIF, GitHub Action) plus Loophole Server Guard for live server protection (log monitoring, threat scoring, alerts, firewall auto-ban, honeypots, dashboard); MIT licensed on GitHub
 - https://frinjo.me/tools
 - https://frinjo.me/keyword-traffic-checker
 - https://frinjo.me/ip-address-tracker
