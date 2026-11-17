@@ -138,7 +138,29 @@ const SAVINGS_ACCOUNTS_BLOCKS: string[] = [
 
   "## The Smart Move: Do Not Put All Your Savings in One Place",
 
-  "Even the best savings account will not beat inflation on its own. A practical Pakistani setup in 2026: keep your emergency fund (3–6 months of expenses) in a high-rate savings account, and put longer-term money into mutual funds or government savings schemes. The savings account is your safety net, not your growth engine — but picking the right one still puts tens of thousands of extra rupees in your pocket every year.",
+  "Even the best savings account will not beat inflation on its own. A practical Pakistani setup in 2026: keep your emergency fund (3–6 months of expenses) in a high-rate savings account, and put longer-term money into mutual funds or government savings schemes. The savings account is your safety net, not your growth engine — but picking the right one still puts tens of thousands of extra rupees in your pocket every year. See what the difference compounds to with our free [Compound Interest Calculator](/compound-interest-calculator).",
+
+  "## FAQ",
+
+  "## Which bank gives the highest savings profit rate in Pakistan in 2026?",
+
+  "It changes with State Bank policy, sometimes every few months. Through 2025–26 the top of the table has usually been a digital wallet or a smaller Islamic bank running a promotional rate, with the big banks (Meezan, HBL, UBL, MCB) in the middle of the pack around the 8–11% range. Never trust a rate printed in an old article — including this one. Check the bank's own current profit-rate schedule before you open the account.",
+
+  "## What minimum balance do I need to open a savings account?",
+
+  "Often none. Basic and Asaan accounts at most banks open with no minimum balance, and digital wallets like NayaPay and SadaPay have no minimum at all. The catch is in the fine print of premium accounts: the headline profit rate may only apply above Rs 25,000, Rs 100,000 or even Rs 1 million, and some accounts pay zero profit in any month your balance dips below the threshold.",
+
+  "## Is the profit on a savings account taxable in Pakistan?",
+
+  "Yes. Profit is paid after withholding tax deducted at source — at a lower rate if you are on the Active Taxpayer List and a higher rate if you are a non-filer, so filing your return directly increases what you keep. Separately, Zakat at 2.5% may be deducted from applicable accounts on the notified date if your balance exceeds the nisab threshold. The advertised rate is always the gross rate; what lands in your account is net of both.",
+
+  "## Can overseas Pakistanis open a savings account in Pakistan?",
+
+  "Yes — through a Roshan Digital Account (RDA), the State Bank's programme for non-resident Pakistanis. An RDA opens fully online from abroad, in rupees or foreign currency, with most major Pakistani banks, and can also invest in Naya Pakistan Certificates and the stock market. You need your CNIC/NICOP and basic documents; no branch visit is required.",
+
+  "## How much profit will Rs 100,000 earn in a savings account?",
+
+  "At 8% a year, roughly Rs 8,000 gross; at 11%, roughly Rs 11,000 — before withholding tax and any Zakat. Two things reduce the real figure: most banks calculate profit on your monthly average or minimum balance (so a month where the balance dips earns less), and the deductions above. Run your own balance and rate through our [Compound Interest Calculator](/compound-interest-calculator) to see the multi-year picture.",
 
   "Profit rates change with State Bank policy, so always check the bank's current schedule of charges before opening an account. Rates quoted here are indicative ranges for 2026 — verify before you commit."
 
@@ -192,6 +214,28 @@ const WEB_HOSTING_BLOCKS: string[] = [
   "Third, payment and billing. International hosts bill in USD, so add 3–5% in conversion fees plus whatever your bank charges. Local hosts that accept JazzCash, Easypaisa, or bank transfer save you that friction — and you get support in your timezone, in a language your team speaks.",
 
   "![Bright workspace with an iMac and a plant in daylight](https://images.pexels.com/photos/381949/pexels-photo-381949.jpeg?auto=compress&cs=tinysrgb&w=1200)",
+
+  "## Frequently Asked Questions",
+
+  "## What is the cheapest web hosting in Pakistan?",
+
+  "Hostinger's Single plan at around Rs 399/month is the cheapest reputable entry point — but only on a multi-year prepaid deal, and it renews much higher. Among local hosts, PK Hosting's Rs 6,990/year plan (about Rs 583/month) is the cheapest with PKR billing. Judge every plan by its renewal price over three years, not the first-year headline.",
+
+  "## Can I pay for web hosting with JazzCash or Easypaisa?",
+
+  "With local Pakistani hosts, yes — Hostedium, PK Hosting and HostBreak all accept JazzCash, Easypaisa or bank transfer. International hosts (Hostinger, Namecheap, Bluehost) bill in USD and need a debit or credit card activated for international online transactions, plus a 3–5% currency conversion cost on top. That payment friction is the main reason many Pakistani freelancers start with a local host.",
+
+  "## Shared hosting, VPS or cloud — which one does a small business need?",
+
+  "Shared hosting is enough for almost every new business website and small store: it handles brochure sites, blogs and starter WooCommerce stores comfortably. Move to a VPS or managed cloud (like Cloudways) when your store's traffic grows, pages start timing out at peak hours, or you run several client sites. Buying a VPS on day one is paying for capacity you will not use for a year.",
+
+  "## Does my hosting choice affect my Google ranking?",
+
+  "Yes. Google uses loading speed (Core Web Vitals) as a ranking factor, and your host decides most of it: server location, disk speed and whether the stack runs LiteSpeed or modern PHP. A Singapore or Mumbai server loads noticeably faster for Pakistani visitors than a US one. Hosting will not rescue bad content — but slow hosting quietly taxes every page you publish.",
+
+  "## Do hosting plans include a free domain?",
+
+  "Many do for the first year — Hostinger's Premium and Bluehost's plans bundle one — but the domain renews at the standard price from year two, and 'free' domains are registered by the host, which can complicate moving away. A common pro move: register the domain separately at a registrar like Namecheap (with free WHOIS privacy) and point it at whichever host you choose.",
 
   "## The Verdict",
 
