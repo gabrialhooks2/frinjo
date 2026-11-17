@@ -74,6 +74,14 @@ const FAQS: [string, string][] = [
     "Tres causas principales: (1) poco contraste —código claro sobre fondo oscuro o colores parecidos—; este generador avisa, pero la regla es código oscuro sobre fondo claro; (2) contenido demasiado largo, que produce un QR muy denso difícil de leer en impresiones pequeñas — acorta la URL si puedes; (3) tamaño impreso demasiado pequeño: un QR con mucho contenido necesita al menos 3–4 cm por lado. Prueba siempre con dos teléfonos distintos antes de publicar.",
   ],
   [
+    "¿Cómo escaneo un código QR con mi teléfono?",
+    "En casi todos los teléfonos actuales no necesitas ninguna app: abre la cámara, apunta al código durante un segundo y toca el enlace que aparece en pantalla. En iPhone funciona desde iOS 11 y en Android desde la app de cámara de la mayoría de fabricantes; si la tuya no lo reconoce, usa Google Lens (en la app de Google o en Chrome) o el escáner de Ajustes rápidos. Nunca instales un lector de QR de pago: los que piden suscripción para escanear son innecesarios.",
+  ],
+  [
+    "¿Puedo poner mi logotipo en el centro del código?",
+    "Sí, con cuidado. Un QR admite que se tape hasta un ~30% de su superficie si se generó con el nivel de corrección de errores más alto (H), y los logotipos comerciales se colocan justo en ese margen. Este generador no inserta logotipos, pero puedes descargar el SVG y añadir el tuyo en cualquier editor gráfico: mantén el logo pequeño (menos de un tercio del código), conserva el margen blanco exterior y prueba el escaneo con varios teléfonos antes de imprimir. Si el logo tapa las esquinas de posicionamiento (los tres cuadrados grandes), el código dejará de leerse.",
+  ],
+  [
     "¿Qué datos míos se guardan al crear un QR?",
     "Ninguno. La generación ocurre 100% en tu navegador con una biblioteca local: el contenido (incluida tu contraseña WiFi o tu teléfono) nunca se envía a un servidor ni queda registrado. Puedes comprobarlo desconectando internet: el generador sigue funcionando.",
   ],
@@ -163,6 +171,103 @@ export default function GeneradorQrPage() {
                 Cualquier enlace o texto libre: la carta de tu restaurante, tu página de reseñas de Google,
                 un cupón o la dirección de tu local. Corto es mejor: menos contenido = QR más fácil de escanear.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20 bg-orange-50 dot-grid border-t border-stone-100">
+        <div className="max-w-3xl mx-auto px-4">
+          <SectionHead
+            eyebrow="Lo esencial"
+            title="¿Qué es un código QR y cómo se crea uno que funcione?"
+            sub="Inventado en 1994 por Denso Wave para rastrear piezas de coche en las fábricas de Toyota; hoy cabe en él desde un enlace hasta 2,953 bytes de datos."
+          />
+          <div className="-mt-4 space-y-5 text-stone-600 leading-relaxed text-left">
+            <p>
+              Un código QR (Quick Response) es un código de barras bidimensional: guarda la información en
+              una cuadrícula de módulos blancos y negros y la lee cualquier cámara en menos de un segundo.
+              Existen 40 «versiones» (tamaños) y cuatro niveles de corrección de errores que permiten
+              reconstruir el contenido aunque parte del código esté dañado o tapado.
+            </p>
+            <p>
+              <strong className="text-stone-900">Crear el tuyo lleva cuatro pasos:</strong> (1) elige el tipo
+              —URL, WiFi, vCard, WhatsApp, correo, teléfono o texto—; (2) escribe el contenido, cuanto más
+              corto mejor; (3) ajusta los colores manteniendo el código oscuro sobre fondo claro; (4)
+              descarga en PNG para pantallas y papel pequeño, o en SVG para imprimir en grande. Después,
+              escanéalo tú mismo con dos teléfonos antes de darlo por bueno.
+            </p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 mt-8 text-left">
+            <div>
+              <p className="font-bold text-stone-900 mb-2">Corrección de errores: cuánto daño aguanta</p>
+              <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden bg-white">
+                <thead>
+                  <tr className="bg-orange-100/60 text-stone-900">
+                    <th className="px-4 py-2.5 font-bold">Nivel</th>
+                    <th className="px-4 py-2.5 font-bold">Recupera hasta</th>
+                    <th className="px-4 py-2.5 font-bold">Uso típico</th>
+                  </tr>
+                </thead>
+                <tbody className="text-stone-600">
+                  <tr className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">L</td>
+                    <td className="px-4 py-2.5">≈7% del código</td>
+                    <td className="px-4 py-2.5">Pantallas, QR cortos</td>
+                  </tr>
+                  <tr className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">M</td>
+                    <td className="px-4 py-2.5">≈15%</td>
+                    <td className="px-4 py-2.5">Uso general</td>
+                  </tr>
+                  <tr className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">Q</td>
+                    <td className="px-4 py-2.5">≈25%</td>
+                    <td className="px-4 py-2.5">Exterior, desgaste</td>
+                  </tr>
+                  <tr className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">H</td>
+                    <td className="px-4 py-2.5">≈30%</td>
+                    <td className="px-4 py-2.5">Con logotipo central</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="text-sm text-stone-600 mt-2">Más corrección = código más denso. Para un enlace corto, el nivel medio basta y se escanea más fácil.</p>
+            </div>
+            <div>
+              <p className="font-bold text-stone-900 mb-2">QR estático vs dinámico</p>
+              <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden bg-white">
+                <thead>
+                  <tr className="bg-orange-100/60 text-stone-900">
+                    <th className="px-4 py-2.5 font-bold"></th>
+                    <th className="px-4 py-2.5 font-bold">Estático (este)</th>
+                    <th className="px-4 py-2.5 font-bold">Dinámico</th>
+                  </tr>
+                </thead>
+                <tbody className="text-stone-600">
+                  <tr className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">Contenido</td>
+                    <td className="px-4 py-2.5">Fijo en el código</td>
+                    <td className="px-4 py-2.5">Editable tras imprimir</td>
+                  </tr>
+                  <tr className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">Caducidad</td>
+                    <td className="px-4 py-2.5">Nunca</td>
+                    <td className="px-4 py-2.5">Si dejas de pagar</td>
+                  </tr>
+                  <tr className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">Coste</td>
+                    <td className="px-4 py-2.5">Gratis</td>
+                    <td className="px-4 py-2.5">Suscripción mensual</td>
+                  </tr>
+                  <tr className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">Estadísticas</td>
+                    <td className="px-4 py-2.5">No</td>
+                    <td className="px-4 py-2.5">Sí, de escaneos</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="text-sm text-stone-600 mt-2">El dinámico solo compensa si necesitas cambiar el destino sin reimprimir o medir escaneos; para menús, tarjetas y WiFi, el estático es el de siempre.</p>
             </div>
           </div>
         </div>

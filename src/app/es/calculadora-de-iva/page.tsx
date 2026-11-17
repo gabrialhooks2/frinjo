@@ -81,6 +81,14 @@ const FAQS: [string, string][] = [
     "Cuando una persona física presta servicios profesionales a una empresa (persona moral) en México, la empresa retiene una parte del pago: habitualmente el 10% de ISR sobre la base y dos tercios del IVA (66.67% de la cuota). En esta calculadora ambos campos son opcionales y están a cero por defecto: la retención de ISR se aplica sobre la base imponible y la de IVA sobre la cuota del impuesto, tal como se refleja en la factura. Si tu régimen es RESICO u otro caso, introduce los porcentajes que te apliquen.",
   ],
   [
+    "¿Qué diferencia hay entre tipo 0% y operación exenta?",
+    "No es lo mismo, aunque en ambos casos la factura lleva 0 de cuota. Una operación al tipo 0% (tasa cero) sí está gravada: quien la emite puede deducirse el IVA soportado en sus compras, como ocurre con las exportaciones o ciertos alimentos básicos en varios países. Una operación exenta está fuera del impuesto: no se cobra IVA, pero tampoco se puede deducir el IVA de los gastos relacionados (por eso la sanidad o la educación exentas encarecen los costes del proveedor). En la calculadora elige 0% en ambos casos —la cuota sale igual—; la diferencia importa en tu declaración, no en la factura.",
+  ],
+  [
+    "¿Qué porcentajes de retención pongo si estoy en RESICO o facturo fletes en México?",
+    "Depende de tu régimen y actividad. Servicios profesionales (honorarios) a una empresa: retención de ISR del 10% sobre la base y de IVA del 66.67% sobre la cuota. Si tributas en RESICO, la retención de ISR baja al 1.25% sobre la base (la de IVA se mantiene en dos tercios cuando aplica). En autotransporte de carga (fletes), la retención de IVA es del 4% sobre la base, en lugar de los dos tercios. Arrendamiento a empresa: 10% de ISR y dos tercios del IVA. Introduce esos porcentajes en los campos de retención y la calculadora hace el resto.",
+  ],
+  [
     "¿La calculadora es gratis? ¿Se guardan mis datos?",
     "Sí, es completamente gratis y sin registro. Todas las operaciones se hacen en tu navegador: las cifras de tu factura no se envían a ningún servidor ni quedan guardadas. Puedes cerrar la página y no quedará rastro de los importes que calculaste.",
   ],
@@ -177,6 +185,11 @@ export default function CalculadoraIvaPage() {
                 ISR se calcula sobre la base imponible y la retención de IVA sobre la cuota (habitualmente
                 dos tercios, 66.67%). Por defecto ambos campos están a cero: actívalos solo si te aplican.
               </p>
+              <p className="text-stone-600 leading-relaxed mt-3">
+                Ejemplo completo: honorarios de 10,000 con IVA del 16% dan una cuota de 1,600. La empresa
+                retiene 1,066.67 de IVA (dos tercios) y 1,000 de ISR (10% de la base), así que el total que
+                cobra el profesional es <strong>9,533.33</strong>, no 11,600. Si estás en RESICO, la
+                retención de ISR baja al 1.25%; en fletes, la retención de IVA es del 4% de la base.
             </div>
             <div className={card}>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-green-600 mb-3">Total en letra</p>

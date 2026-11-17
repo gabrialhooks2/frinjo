@@ -77,6 +77,18 @@ const FAQS: [string, string][] = [
     "Porque en EE. UU. el banco suele recaudarlos dentro de la cuota (cuenta escrow): cada mes pagas capital e intereses más 1/12 del impuesto predial anual y 1/12 del seguro de hogar, y si el edificio tiene asociación, la cuota HOA se suma aparte. Por eso dos hipotecas con el mismo capital y tipo pueden tener pagos mensuales muy distintos según la zona. El modo EE. UU. y Latinoamérica de esta calculadora desglosa cada parte.",
   ],
   [
+    "¿Qué es la TAE y en qué se diferencia del TIN?",
+    "El TIN es solo el tipo de interés nominal: lo que el banco cobra por prestarte el dinero. La TAE (tasa anual equivalente) suma al TIN las comisiones y gastos obligatorios del préstamo — apertura, tasación si la impone el banco, seguros vinculados — y por eso es la cifra que permite comparar ofertas de bancos distintos. Una hipoteca con un TIN más bajo puede salir más cara si su TAE es mayor por las vinculaciones. Esta calculadora trabaja con el TIN; pide siempre la TAE (viene en la FiAE/FIPER que el banco debe entregarte) antes de comparar.",
+  ],
+  [
+    "Si amortizo anticipadamente, ¿reduzco cuota o plazo?",
+    "Reducir plazo ahorra muchos más intereses, porque el saldo baja antes y cada cuota lleva menos interés; reducir cuota mantiene el plazo y solo alivia el pago mensual. En España, la Ley 5/2019 limita la comisión por amortización anticipada en hipotecas fijas al 2% del capital reembolsado durante los primeros 10 años y al 1.5% después; en variables, al 0.25% los 3 primeros años o al 0.15% los 5 primeros, según lo pactado. Amortizar en los primeros años rinde más: es cuando el saldo — y por tanto el interés de cada cuota — es mayor.",
+  ],
+  [
+    "¿Cuánto de mis ingresos debería ir a la cuota?",
+    "La regla práctica que usan los bancos españoles es que la cuota, sumada a tus otras deudas, no supere el 30–35% de tus ingresos netos mensuales. Con 2,000 € netos al mes, la cuota prudente ronda los 600–700 €; por encima de eso, cualquier imprevisto (una avería, un mes sin ingresos) pone el presupuesto en tensión. Antes de enamorarte de una vivienda, divide tu sueldo neto entre tres: esa es, aproximadamente, la cuota máxima que deberías simular aquí.",
+  ],
+  [
     "¿La calculadora es gratis? ¿Se guardan mis datos?",
     "Sí, es gratis y sin registro. Las cifras de tu vivienda y tu préstamo se procesan solo en tu navegador: no se envían a ningún servidor ni quedan guardadas. Los resultados son una simulación informativa, no una oferta vinculante de ningún banco.",
   ],
@@ -171,6 +183,76 @@ export default function CalculadoraHipotecaPage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* WORKED EXAMPLE */}
+      <section className="py-16 sm:py-20 bg-orange-50 dot-grid border-t border-stone-100">
+        <div className="max-w-3xl mx-auto px-4">
+          <SectionHead
+            eyebrow="Ejemplo completo"
+            title="Comprar una vivienda de 240,000 €, con todos los gastos"
+            sub="La cuota es solo una parte: esto es el dinero que necesitas el día de la firma y lo que pagas en total."
+          />
+          <div className="-mt-4 space-y-5 text-stone-600 leading-relaxed text-left">
+            <p>
+              Vivienda de segunda mano en Madrid por <strong className="text-stone-900">240,000 €</strong>, con
+              entrada del 20% (<strong className="text-stone-900">48,000 €</strong>) y un préstamo de{" "}
+              <strong className="text-stone-900">192,000 € al 3.5% a 30 años</strong>. La cuota sale a{" "}
+              <strong className="text-stone-900">862 € al mes</strong> y los intereses totales a unos{" "}
+              <strong className="text-stone-900">118,400 €</strong> en los 30 años.
+            </p>
+            <p>
+              Pero el día de la firma también pagas los gastos de compra: el ITP de Madrid (6%) son{" "}
+              <strong className="text-stone-900">14,400 €</strong> — en otras comunidades va del 4% al 11% —,
+              más notaría, registro y gestoría (unos 2,500 €) y la tasación (unos 400 €). Total de gastos:{" "}
+              <strong className="text-stone-900">≈17,300 €</strong>. El ahorro que necesitas antes de comprar
+              no es la entrada sola: es entrada + gastos,{" "}
+              <strong className="text-stone-900">≈65,300 €</strong> en este ejemplo. En vivienda nueva el ITP se
+              sustituye por IVA del 10% más actos jurídicos documentados.
+            </p>
+          </div>
+          <h3 className="font-display text-2xl font-bold text-stone-900 mt-10 mb-4 text-left">
+            Cuota por cada 100,000 € prestados al 3.5%
+          </h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm sm:text-base border border-stone-200 rounded-2xl overflow-hidden bg-white">
+              <thead>
+                <tr className="bg-orange-100/60 text-stone-900">
+                  <th className="px-4 py-3 font-bold">Plazo</th>
+                  <th className="px-4 py-3 font-bold">Cuota mensual</th>
+                  <th className="px-4 py-3 font-bold">Intereses totales</th>
+                </tr>
+              </thead>
+              <tbody className="text-stone-600">
+                <tr className="border-t border-stone-200">
+                  <td className="px-4 py-3">15 años</td>
+                  <td className="px-4 py-3">714.86 €</td>
+                  <td className="px-4 py-3">28,700 €</td>
+                </tr>
+                <tr className="border-t border-stone-200">
+                  <td className="px-4 py-3">20 años</td>
+                  <td className="px-4 py-3">579.91 €</td>
+                  <td className="px-4 py-3">39,200 €</td>
+                </tr>
+                <tr className="border-t border-stone-200">
+                  <td className="px-4 py-3">25 años</td>
+                  <td className="px-4 py-3">500.62 €</td>
+                  <td className="px-4 py-3">50,200 €</td>
+                </tr>
+                <tr className="border-t border-stone-200">
+                  <td className="px-4 py-3">30 años</td>
+                  <td className="px-4 py-3">449.04 €</td>
+                  <td className="px-4 py-3">61,700 €</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-stone-600 leading-relaxed mt-6 text-left">
+            Alargar el plazo de 15 a 30 años recorta la cuota un 37%, pero más que duplica los intereses.
+            Si la cuota a 20 años te cabe en el presupuesto (la regla del 35% de tus ingresos netos), ese
+            plazo suele ser el equilibrio entre pagar cómodo y no regalar intereses.
+          </p>
         </div>
       </section>
 

@@ -63,6 +63,18 @@ const FAQS: [string, string][] = [
     "Enter extra credit as course points (for example 2 if it is worth 2 points toward the final grade) in the extra-credit field. It is added to your secured points, which is how most syllabi apply it. If your class applies extra credit inside one category instead, add it to that category's earned points.",
   ],
   [
+    "What if my teacher drops the lowest score?",
+    "Many syllabi drop the lowest quiz or homework score in a category. This calculator takes one average per category, so drop the score yourself before you average: quizzes of 72, 85, 90, 88 and 94 average 85.8% — with the 72 dropped, the same set averages 89.25%. Enter 89.25% (or 357 out of 400 in Points mode) and the weighted result matches your teacher's gradebook. Dropping a low score helps most in heavily weighted categories, so check those first.",
+  ],
+  [
+    "What if I need more than 100% on what's left to reach my target?",
+    "Then that target is mathematically out of reach — no score on the remaining work can pull the average up enough, because the points already lost outweigh what is left. Your secured points cannot go down, though: the table under the result also shows the targets that are still reachable, and finishing one band higher (a B instead of a B-, say) is usually still on the table. Recheck that every category and weight from your syllabus is entered — a missing category is the most common reason for an impossible number.",
+  ],
+  [
+    "How do I turn my weighted percentage into a letter grade or GPA points?",
+    "Use the standard scale in the table above: 93–100% is an A (4.0), 90–92% an A- (3.7), 83–86% a B (3.0), 73–76% a C (2.0) and below 60% an F (0.0). Schools vary the cut-offs by a point or two, and some weight AP and honors courses on a 5.0 scale instead — check your student handbook for the exact bands your school uses.",
+  ],
+  [
     "Is the Weighted Grade Calculator free?",
     "Yes, completely free with no sign-up. Your grades are calculated in your browser and never stored.",
   ],
@@ -105,6 +117,109 @@ export default function WeightedGradePage() {
       </section>
 
       <WeightedGrade />
+
+      <section className="py-16 sm:py-20 bg-white border-t border-stone-100">
+        <div className="max-w-3xl mx-auto px-4">
+          <SectionHead
+            eyebrow="How it works"
+            title="The formula, worked end to end"
+            sub="A weighted grade is not a plain average: each category pulls in proportion to its weight."
+          />
+          <p className="text-stone-600 leading-relaxed">
+            For every category, multiply its average by its weight, add the products, and divide by the
+            total weight graded so far: <strong>(score₁ × weight₁ + score₂ × weight₂ + …) ÷ total weight</strong>.
+            The same course with the same scores can land a full letter apart under a plain average —
+            an 78 on a midterm worth 25% costs more than a 78 on homework worth 20%, and the weighted
+            figure is the one your transcript sees.
+          </p>
+          <div className="overflow-x-auto mt-8">
+            <table className="w-full text-left text-sm sm:text-base border border-stone-200 rounded-2xl overflow-hidden">
+              <thead>
+                <tr className="bg-orange-50 text-stone-900">
+                  <th className="px-4 py-3 font-bold">Category</th>
+                  <th className="px-4 py-3 font-bold">Score</th>
+                  <th className="px-4 py-3 font-bold">Weight</th>
+                  <th className="px-4 py-3 font-bold">Score × weight</th>
+                </tr>
+              </thead>
+              <tbody className="text-stone-600">
+                <tr className="border-t border-stone-200">
+                  <td className="px-4 py-3">Homework</td>
+                  <td className="px-4 py-3">90%</td>
+                  <td className="px-4 py-3">20</td>
+                  <td className="px-4 py-3">1,800</td>
+                </tr>
+                <tr className="border-t border-stone-200">
+                  <td className="px-4 py-3">Quizzes</td>
+                  <td className="px-4 py-3">85%</td>
+                  <td className="px-4 py-3">20</td>
+                  <td className="px-4 py-3">1,700</td>
+                </tr>
+                <tr className="border-t border-stone-200">
+                  <td className="px-4 py-3">Midterm</td>
+                  <td className="px-4 py-3">78%</td>
+                  <td className="px-4 py-3">25</td>
+                  <td className="px-4 py-3">1,950</td>
+                </tr>
+                <tr className="border-t border-stone-200 font-bold text-stone-900">
+                  <td className="px-4 py-3">Weighted grade</td>
+                  <td className="px-4 py-3" colSpan={2}>5,450 ÷ 65</td>
+                  <td className="px-4 py-3">83.8% (B)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-stone-600 leading-relaxed mt-6">
+            Only 65% of this course is graded, so 54.5 of the 100 course points are already secured.
+            The calculator&apos;s table under the result runs the same formula forward: the average the
+            remaining 35% must produce for a 90, 80, 70 or 60% finish —{" "}
+            <strong>needed = (target − secured) ÷ remaining weight</strong>.
+          </p>
+
+          <h3 className="font-display text-2xl font-bold text-stone-900 mt-12 mb-4">
+            The standard grading scale
+          </h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm sm:text-base border border-stone-200 rounded-2xl overflow-hidden">
+              <thead>
+                <tr className="bg-orange-50 text-stone-900">
+                  <th className="px-4 py-3 font-bold">Letter</th>
+                  <th className="px-4 py-3 font-bold">Percentage</th>
+                  <th className="px-4 py-3 font-bold">GPA points</th>
+                </tr>
+              </thead>
+              <tbody className="text-stone-600">
+                {[
+                  ["A+", "97–100%", "4.0"],
+                  ["A", "93–96%", "4.0"],
+                  ["A-", "90–92%", "3.7"],
+                  ["B+", "87–89%", "3.3"],
+                  ["B", "83–86%", "3.0"],
+                  ["B-", "80–82%", "2.7"],
+                  ["C+", "77–79%", "2.3"],
+                  ["C", "73–76%", "2.0"],
+                  ["C-", "70–72%", "1.7"],
+                  ["D+", "67–69%", "1.3"],
+                  ["D", "63–66%", "1.0"],
+                  ["D-", "60–62%", "0.7"],
+                  ["F", "Below 60%", "0.0"],
+                ].map(([letter, pct, gpa]) => (
+                  <tr key={letter} className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">{letter}</td>
+                    <td className="px-4 py-2.5">{pct}</td>
+                    <td className="px-4 py-2.5">{gpa}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-stone-600 leading-relaxed mt-6">
+            Cut-offs move a point or two between schools, and weighted AP or honors courses often use a
+            5.0 scale for the GPA column — but the percentage-to-letter bands above are the ones most US
+            high schools and colleges publish.
+          </p>
+        </div>
+      </section>
 
       <section className="py-16 sm:py-20 bg-orange-50 dot-grid">
         <div className="max-w-4xl mx-auto px-4 text-center">

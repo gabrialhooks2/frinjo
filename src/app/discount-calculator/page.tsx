@@ -76,6 +76,10 @@ const FAQS: [string, string][] = [
     "Percentage off = (1 − sale ÷ original) × 100. Was $200, now $150 → (1 − 0.75) × 100 = 25% off. The second reverse mode handles it — handy when a listing shows prices but hides the percentage, or inflates it.",
   ],
   [
+    "Which is better: a percentage discount or a dollar-off coupon?",
+    "Whichever takes more off your actual basket. Divide the coupon by the percentage to find the break-even price: a $15 coupon against 20% off breaks even at $15 ÷ 0.20 = $75. Under $75 the coupon saves more ($15 beats $10 on a $50 item); over $75 the percentage wins ($40 beats $15 on a $200 item). The table in the method section above runs both side by side.",
+  ],
+  [
     "What does 'up to 70% off' actually mean?",
     "It means at least one item is 70% off — possibly the only one. Check the % off on the specific item you want with the reverse mode above, and compare the final price (with tax) across stores, not the headline percentage.",
   ],
@@ -189,6 +193,73 @@ export default function DiscountCalculatorPage() {
                 </li>
               ))}
             </ul>
+            <div className="grid gap-5 md:grid-cols-2 pt-2">
+              <div>
+                <p className="font-bold text-stone-900 mb-2">BOGO offers, translated</p>
+                <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+                  <thead>
+                    <tr className="bg-orange-50 text-stone-900">
+                      <th className="px-4 py-2.5 font-bold">The offer</th>
+                      <th className="px-4 py-2.5 font-bold">Real saving</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-t border-stone-200">
+                      <td className="px-4 py-2.5">Buy 1, get 1 free</td>
+                      <td className="px-4 py-2.5">50% off the pair</td>
+                    </tr>
+                    <tr className="border-t border-stone-200">
+                      <td className="px-4 py-2.5">Buy 1, get 1 at 50% off</td>
+                      <td className="px-4 py-2.5">25% off the pair</td>
+                    </tr>
+                    <tr className="border-t border-stone-200">
+                      <td className="px-4 py-2.5">Buy 2, get 1 free</td>
+                      <td className="px-4 py-2.5">33.3% off the three</td>
+                    </tr>
+                    <tr className="border-t border-stone-200">
+                      <td className="px-4 py-2.5">Buy 3, get 1 free</td>
+                      <td className="px-4 py-2.5">25% off the four</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p className="text-sm mt-2">Assumes every item costs the same; if they differ, stores almost always discount the cheapest one.</p>
+              </div>
+              <div>
+                <p className="font-bold text-stone-900 mb-2">% off vs a $ coupon: which wins?</p>
+                <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+                  <thead>
+                    <tr className="bg-orange-50 text-stone-900">
+                      <th className="px-4 py-2.5 font-bold">Price</th>
+                      <th className="px-4 py-2.5 font-bold">20% off saves</th>
+                      <th className="px-4 py-2.5 font-bold">$15 off saves</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-t border-stone-200">
+                      <td className="px-4 py-2.5">$50</td>
+                      <td className="px-4 py-2.5">$10</td>
+                      <td className="px-4 py-2.5 font-bold text-stone-900">$15 — coupon wins</td>
+                    </tr>
+                    <tr className="border-t border-stone-200">
+                      <td className="px-4 py-2.5">$75</td>
+                      <td className="px-4 py-2.5">$15</td>
+                      <td className="px-4 py-2.5">$15 — a tie</td>
+                    </tr>
+                    <tr className="border-t border-stone-200">
+                      <td className="px-4 py-2.5">$100</td>
+                      <td className="px-4 py-2.5 font-bold text-stone-900">$20 — % wins</td>
+                      <td className="px-4 py-2.5">$15</td>
+                    </tr>
+                    <tr className="border-t border-stone-200">
+                      <td className="px-4 py-2.5">$200</td>
+                      <td className="px-4 py-2.5 font-bold text-stone-900">$40 — % wins</td>
+                      <td className="px-4 py-2.5">$15</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p className="text-sm mt-2">The break-even is the coupon divided by the percentage: $15 ÷ 20% = $75. Below it the flat coupon wins; above it the percentage wins.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
