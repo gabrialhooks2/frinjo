@@ -73,6 +73,18 @@ const FAQS: [string, string][] = [
     "Does converting text keep my line breaks and spacing?",
     "It depends on the conversion. UPPER, lower, Title and Sentence case work in place and keep your spacing, punctuation and line breaks exactly. The code conversions — camelCase, snake_case, kebab-case and the rest — rebuild the text word by word, so all original spacing and line breaks collapse into the new joiner by design.",
   ],
+  [
+    "I typed a whole paragraph with Caps Lock on. Can I fix it without retyping?",
+    "Yes — this is the classic rescue. Paste the SHOUTED text here and run Sentence case (or lower case, then Title Case for a headline): 'THE MEETING MOVES TO FRIDAY' becomes 'The meeting moves to friday' in one click. One manual touch-up remains: proper nouns — Friday, names, places — lose their capitals in the conversion, so re-capitalise those by hand. Still faster than retyping the paragraph.",
+  ],
+  [
+    "How do I change case in Word, Excel or Google Docs without a converter?",
+    "In Microsoft Word, select the text and press Shift+F3 to cycle lower → UPPER → Capitalize Each Word. In Excel and Google Sheets, use formulas: =UPPER(A1), =LOWER(A1) and =PROPER(A1) (PROPER is Title Case). Google Docs has Format → Text → Capitalization. These built-ins cover the three basic cases; for camelCase, snake_case, slugs and the other code conventions, use the converter above — spreadsheets have no formula for those.",
+  ],
+  [
+    "Can I undo a case conversion — is it reversible?",
+    "Not reliably. Case carries information: 'US' (the country) and 'us' (the pronoun) differ only in case, and lowercasing both makes them indistinguishable forever. UPPER CASE and lower case are one-way trips — no tool can know which letters were originally capital. Keep a copy of the original text if there is any chance you will need it back.",
+  ],
 ];
 
 const faqJsonLd = {
@@ -169,6 +181,80 @@ export default function CaseConverterPage() {
               <li>The wrong joiner in a URL. Spaces and underscores do not belong in an address bar; run the kebab-case conversion for anything that will be published as a link.</li>
               <li>Trusting Sentence case with names. It lowercases everything first, then capitalises sentence starts, so Paris, May and Dr. Lee all need a second look after converting.</li>
             </ul>
+            <h3 className="mt-10 font-display text-xl font-bold text-stone-900 mb-3">The 16 conversions, on one phrase</h3>
+            <p className="text-stone-600 leading-relaxed mb-4">
+              Every row below is the same input — “case converter tool” (and for inverse case, “Case
+              Converter”) — run through one of the sixteen modes above.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+                <thead>
+                  <tr className="bg-orange-50 text-stone-900">
+                    <th className="px-4 py-3 font-bold">Case</th>
+                    <th className="px-4 py-3 font-bold">Example</th>
+                    <th className="px-4 py-3 font-bold">Used for</th>
+                  </tr>
+                </thead>
+                <tbody className="text-stone-600">
+                  {[
+                    ["UPPER CASE", "CASE CONVERTER TOOL", "Labels, warnings, acronyms"],
+                    ["lower case", "case converter tool", "Emails, URLs, hashtags"],
+                    ["Title Case", "Case Converter Tool", "Headlines and titles"],
+                    ["Sentence case", "Case converter tool", "Body text, UI labels, buttons"],
+                    ["Capitalized Words", "Case Converter Tool", "Every word capitalised, no exceptions"],
+                    ["aLtErNaTiNg CaSe", "cAsE cOnVeRtEr ToOl", "Memes, playful emphasis"],
+                    ["Inverse case", "cASE cONVERTER", "Fixing text typed with Caps Lock half-on"],
+                    ["Reverse text", "loot retrevnoc esac", "Puzzles, games, mirrored text"],
+                    ["Remove spaces", "caseconvertertool", "Hashtags, compact strings"],
+                    ["camelCase", "caseConverterTool", "Variables and functions in JS/Java"],
+                    ["PascalCase", "CaseConverterTool", "Classes and components"],
+                    ["snake_case", "case_converter_tool", "Python/Ruby names, database columns"],
+                    ["SCREAMING_SNAKE_CASE", "CASE_CONVERTER_TOOL", "Constants in almost every language"],
+                    ["kebab-case", "case-converter-tool", "URL slugs, CSS classes"],
+                    ["Train-Case", "Case-Converter-Tool", "HTTP headers (Content-Type)"],
+                    ["dot.case", "case.converter.tool", "Config keys, Java package-style names"],
+                  ].map(([name, example, use]) => (
+                    <tr key={name} className="border-t border-stone-200">
+                      <td className="px-4 py-2.5 font-bold text-stone-900">{name}</td>
+                      <td className="px-4 py-2.5 font-mono text-[13px]">{example}</td>
+                      <td className="px-4 py-2.5">{use}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <h3 className="mt-10 font-display text-xl font-bold text-stone-900 mb-3">Which case does each language want?</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+                <thead>
+                  <tr className="bg-orange-50 text-stone-900">
+                    <th className="px-4 py-3 font-bold">Language</th>
+                    <th className="px-4 py-3 font-bold">Variables &amp; functions</th>
+                    <th className="px-4 py-3 font-bold">Classes</th>
+                    <th className="px-4 py-3 font-bold">Constants</th>
+                  </tr>
+                </thead>
+                <tbody className="text-stone-600">
+                  {[
+                    ["JavaScript / TypeScript", "camelCase", "PascalCase", "SCREAMING_SNAKE"],
+                    ["Python", "snake_case", "PascalCase", "SCREAMING_SNAKE"],
+                    ["Java", "camelCase", "PascalCase", "SCREAMING_SNAKE"],
+                    ["C#", "camelCase (private) / PascalCase (public)", "PascalCase", "PascalCase"],
+                    ["Ruby", "snake_case", "PascalCase", "SCREAMING_SNAKE"],
+                    ["Go", "camelCase (unexported) / PascalCase (exported)", "PascalCase", "PascalCase / SCREAMING_SNAKE"],
+                    ["SQL", "snake_case (tables, columns)", "—", "—"],
+                    ["CSS", "kebab-case (classes, properties)", "—", "—"],
+                  ].map(([lang, vars, classes, consts]) => (
+                    <tr key={lang} className="border-t border-stone-200">
+                      <td className="px-4 py-2.5 font-bold text-stone-900">{lang}</td>
+                      <td className="px-4 py-2.5">{vars}</td>
+                      <td className="px-4 py-2.5">{classes}</td>
+                      <td className="px-4 py-2.5">{consts}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>

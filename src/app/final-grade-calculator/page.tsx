@@ -69,6 +69,18 @@ const FAQS: [string, string][] = [
     "Yes — the maths is the same anywhere a final exam carries a percentage weight. Letter-grade estimates use the common US scale; if your school uses different cut-offs, trust the percentage, which is exact.",
   ],
   [
+    "What do I need on the final just to pass?",
+    "Set your desired grade to your school's pass mark — usually 60%. Example: with a 55% current grade and a final worth 30%, passing needs (60 − 55 × 0.7) ÷ 0.3 = 71.7% on the final. If the number comes back negative, you have already passed on coursework alone; if it is above 100%, ask about retakes or incomplete grades now, while options still exist.",
+  ],
+  [
+    "Can I use this calculator for a midterm or a unit test?",
+    "Yes — nothing in the maths is specific to finals. For any single remaining assessment, enter your current average, the grade you want, and that assessment's weight in the course, and the answer is the score you need on it. It works for midterms, unit tests, a last project or a final portfolio, as long as it is the one remaining graded item (or you treat everything left as one block with its combined weight).",
+  ],
+  [
+    "How much is a final exam usually worth?",
+    "Most commonly 10–40% of the course grade. High-school finals typically sit at 10–20%; college courses more often 20–40%, and some seminars or capstones go higher. The weight is printed in your syllabus grading breakdown — and it matters more than the exam's length or question count, which tell you nothing about its effect on your grade.",
+  ],
+  [
     "Is the Final Grade Calculator free?",
     "Yes, completely free with no sign-up. Your grades are calculated in your browser and never stored.",
   ],
@@ -140,7 +152,7 @@ export default function FinalGradePage() {
           </div>
           <p className="mt-5 text-sm text-stone-500">
             Prefer email? <a href="mailto:neilsonsmarry@gmail.com" className="font-semibold text-orange-700 hover:text-orange-800">neilsonsmarry@gmail.com</a>
-            {" "}· Or browse our <Link href="/services" className="font-semibold text-orange-700 hover:text-orange-800">services</Link> and <Link href="/tools" className="font-semibold text-orange-700 hover:text-orange-800">free tools</Link>.
+            {" "}· Pairs with the <Link href="/weighted-grade-calculator" className="font-semibold text-orange-700 hover:text-orange-800">Weighted Grade Calculator</Link>, <Link href="/gpa-calculator" className="font-semibold text-orange-700 hover:text-orange-800">GPA Calculator</Link> and <Link href="/test-score-calculator" className="font-semibold text-orange-700 hover:text-orange-800">Test Score Calculator</Link>.
           </p>
         </div>
       </section>
@@ -172,6 +184,76 @@ export default function FinalGradePage() {
               the percentage while ignoring your school&apos;s letter cut-offs, which vary — the percentage
               maths is exact either way.
             </p>
+            <p>
+              <strong className="text-stone-900">Points-based classes work too.</strong> Earned 390 of 500
+              points so far (78%), with a 125-point final still to come? The final&apos;s weight is 125 ÷
+              625 total points = 20%. To finish at 80% you need (80 − 78 × 0.8) ÷ 0.2 = 88% of the final —
+              that is 110 of its 125 points. Enter 78, 80 and 20 above and the calculator does the same
+              conversion for you.
+            </p>
+          </div>
+
+          <h3 className="font-display text-2xl font-bold text-stone-900 mt-12 mb-4">
+            Reference tables: the score you need, by current grade
+          </h3>
+          <p className="text-stone-600 leading-relaxed mb-6">
+            Read across from your current grade to the grade you want to finish with. “Secured” means
+            your coursework alone already clears that grade, even with a zero on the final; anything
+            above 100% cannot be reached through the final alone.
+          </p>
+          <div className="grid gap-6 md:grid-cols-2">
+            {[
+              {
+                label: "Final worth 20%",
+                rows: [
+                  ["70%", "170%", "120%", "70%", "20%"],
+                  ["75%", "150%", "100%", "50%", "0%"],
+                  ["80%", "130%", "80%", "30%", "Secured"],
+                  ["85%", "110%", "60%", "10%", "Secured"],
+                  ["90%", "90%", "40%", "Secured", "Secured"],
+                  ["95%", "70%", "20%", "Secured", "Secured"],
+                ],
+              },
+              {
+                label: "Final worth 30%",
+                rows: [
+                  ["70%", "137%", "103%", "70%", "37%"],
+                  ["75%", "125%", "92%", "58%", "25%"],
+                  ["80%", "113%", "80%", "47%", "13%"],
+                  ["85%", "102%", "68%", "35%", "2%"],
+                  ["90%", "90%", "57%", "23%", "Secured"],
+                  ["95%", "78%", "45%", "12%", "Secured"],
+                ],
+              },
+            ].map((t) => (
+              <div key={t.label}>
+                <p className="font-bold text-stone-900 mb-2">{t.label}</p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+                    <thead>
+                      <tr className="bg-orange-50 text-stone-900">
+                        <th className="px-3 py-2.5 font-bold">Now</th>
+                        <th className="px-3 py-2.5 font-bold">For 90%</th>
+                        <th className="px-3 py-2.5 font-bold">For 80%</th>
+                        <th className="px-3 py-2.5 font-bold">For 70%</th>
+                        <th className="px-3 py-2.5 font-bold">For 60%</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-stone-600">
+                      {t.rows.map((r) => (
+                        <tr key={r[0]} className="border-t border-stone-200">
+                          <td className="px-3 py-2 font-bold text-stone-900">{r[0]}</td>
+                          <td className="px-3 py-2">{r[1]}</td>
+                          <td className="px-3 py-2">{r[2]}</td>
+                          <td className="px-3 py-2">{r[3]}</td>
+                          <td className="px-3 py-2">{r[4]}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

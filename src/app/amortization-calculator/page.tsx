@@ -68,6 +68,14 @@ const FAQS: [string, string][] = [
     "Does the schedule include taxes and insurance?",
     "No — amortization covers principal and interest only, by definition. Property tax, homeowner's insurance, HOA dues and PMI ride on top of the scheduled payment in a real mortgage bill (usually through escrow). The home affordability calculator prices those lines in before naming a home price; this page shows the loan itself, undiluted.",
   ],
+  [
+    "What do bi-weekly payments do to a mortgage?",
+    "Paying half your monthly payment every two weeks makes 26 half-payments a year — the equivalent of 13 monthly payments instead of 12. That one extra payment a year is pure principal. On the $320,000, 6.25%, 30-year example it saves roughly $85,600 of interest and clears the loan about five and a half years early. You can model it here by entering one-twelfth of your payment (about $164 on the example) as the monthly extra. Check with your servicer first: some charge a fee for bi-weekly plans, and the DIY version — one extra monthly payment a year — achieves the same result free.",
+  ],
+  [
+    "Is mortgage interest tax-deductible?",
+    "In the US, yes — if you itemize deductions and your itemized total beats the standard deduction, which is high enough now that most filers do not itemize. The deduction generally covers interest on up to $750,000 of mortgage debt for loans taken after 15 December 2017 ($1 million for older loans), on a primary or second home. State rules vary, and this is general information, not tax advice — but if your interest, property tax, state taxes and charitable giving together exceed the standard deduction, the schedule above tells you exactly how much interest you pay each year.",
+  ],
 ];
 
 const faqJsonLd = {
@@ -157,6 +165,54 @@ export default function AmortizationPage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20 bg-white border-t border-stone-100">
+        <div className="max-w-3xl mx-auto px-4">
+          <SectionHead eyebrow="Worked example" title="What $200 a month extra actually does" />
+          <div className="space-y-5 text-stone-600 leading-relaxed">
+            <p>
+              The payment itself comes from <strong className="text-stone-900">M = P × r(1+r)ⁿ ÷
+              ((1+r)ⁿ − 1)</strong>, where P is the loan, r the monthly rate (annual ÷ 12) and n the
+              number of months. Take the loan used across this page — $320,000 at 6.25% for 30 years,
+              payment $1,970.30, total interest $389,303 — and add{" "}
+              <strong className="text-stone-900">$200 a month of extra principal</strong> from the very
+              first payment:
+            </p>
+          </div>
+          <div className="overflow-x-auto mt-6">
+            <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+              <thead>
+                <tr className="bg-orange-50 text-stone-900">
+                  <th className="px-4 py-3 font-bold">&nbsp;</th>
+                  <th className="px-4 py-3 font-bold">On schedule</th>
+                  <th className="px-4 py-3 font-bold">+$200/month extra</th>
+                </tr>
+              </thead>
+              <tbody className="text-stone-600">
+                {[
+                  ["Monthly payment", "$1,970.30", "$2,170.30"],
+                  ["Total interest", "$389,303", "≈ $290,287"],
+                  ["Debt-free at", "Month 360 (30 years)", "Month 282 (23½ years)"],
+                  ["Interest saved", "—", "≈ $99,020"],
+                ].map(([label, a, b]) => (
+                  <tr key={label} className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">{label}</td>
+                    <td className="px-4 py-2.5">{a}</td>
+                    <td className="px-4 py-2.5">{b}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-6 text-stone-600 leading-relaxed">
+            The same maths runs smaller loans. A <strong className="text-stone-900">$30,000 auto loan
+            at 7% over 5 years</strong> amortizes at $594.04 a month with about $5,642 of total
+            interest — and because the term is short, even $50 a month extra clears it months early.
+            Enter any loan above and the full month-by-month schedule, crossover and payoff date are
+            yours.
+          </p>
         </div>
       </section>
 

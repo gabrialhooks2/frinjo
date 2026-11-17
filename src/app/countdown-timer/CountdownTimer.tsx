@@ -18,6 +18,9 @@ function fmt(totalSeconds: number): string {
 
 export default function CountdownTimer({ initialMinutes = 5 }: { initialMinutes?: number }) {
   const [durationMin, setDurationMin] = useState(initialMinutes);
+  const [inH, setInH] = useState(0);
+  const [inM, setInM] = useState(initialMinutes);
+  const [inS, setInS] = useState(0);
   const [remaining, setRemaining] = useState(initialMinutes * 60);
   const [running, setRunning] = useState(false);
   const [done, setDone] = useState(false);
@@ -93,10 +96,10 @@ export default function CountdownTimer({ initialMinutes = 5 }: { initialMinutes?
     endAtRef.current = null;
     document.title = baseTitle.current;
   }
-  function setCustom(mins: number) {
-    const m = Math.max(0, Math.min(999, mins || 0));
-    setDurationMin(m);
-    reset(m);
+  function applyHMS(h: number, m: number, s: number) {
+    const totalMin = Math.max(0, Math.min(999, (h || 0) * 60 + (m || 0) + (s || 0) / 60));
+    setDurationMin(totalMin);
+    reset(totalMin);
   }
 
   const total = Math.max(durationMin * 60, 1);
@@ -142,11 +145,21 @@ export default function CountdownTimer({ initialMinutes = 5 }: { initialMinutes?
             </label>
           </div>
 
-          <div className="mt-8 flex items-end justify-center gap-3">
+          <div className="mt-8 flex flex-wrap items-end justify-center gap-3">
+            <div>
+              <label className="block text-xs font-bold text-stone-500 mb-1.5" htmlFor="ct-h">Hours</label>
+              <input id="ct-h" type="number" min="0" max="16" className={inputCls} value={inH}
+                onChange={(e) => { const v = Number(e.target.value); setInH(v); applyHMS(v, inM, inS); }} />
+            </div>
             <div>
               <label className="block text-xs font-bold text-stone-500 mb-1.5" htmlFor="ct-min">Minutes</label>
-              <input id="ct-min" type="number" min="0" max="999" className={inputCls} value={durationMin}
-                onChange={(e) => setCustom(Number(e.target.value))} />
+              <input id="ct-min" type="number" min="0" max="999" className={inputCls} value={inM}
+                onChange={(e) => { const v = Number(e.target.value); setInM(v); applyHMS(inH, v, inS); }} />
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-stone-500 mb-1.5" htmlFor="ct-s">Seconds</label>
+              <input id="ct-s" type="number" min="0" max="59" className={inputCls} value={inS}
+                onChange={(e) => { const v = Number(e.target.value); setInS(v); applyHMS(inH, inM, v); }} />
             </div>
             <button type="button" onClick={start}
               className="rounded-full bg-orange-100 text-orange-800 font-bold px-5 py-3 hover:bg-orange-200 transition">

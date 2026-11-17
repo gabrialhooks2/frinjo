@@ -75,6 +75,14 @@ const FAQS: [string, string][] = [
     "What happens in 2038 (the Year 2038 problem)?",
     "Systems that store epoch seconds in a signed 32-bit integer overflow at 03:14:07 UTC on 19 January 2038 and wrap to 1901. Modern systems use 64-bit integers, which push the limit to the year 292 billion — but plenty of embedded devices and old file formats still use 32 bits.",
   ],
+  [
+    "Why doesn't Unix time count leap seconds?",
+    "By definition. UTC has inserted 27 leap seconds since 1972 to stay aligned with Earth's rotation, but Unix time simply counts 86,400 seconds per day, every day — so Unix timestamps and UTC clock readings drift apart by those inserted seconds, and two different UTC times can share one Unix timestamp during a leap second. It is a deliberate trade: arithmetic stays trivial, and only astronomy-grade work needs to care.",
+  ],
+  [
+    "Can an epoch timestamp be negative?",
+    "Yes — negative values count backwards from the epoch, for dates before 1970. −86,400 is 31 December 1969, 00:00:00 UTC, and historical dates go further back from there. This converter handles them, but watch your language's limits: some platforms (notably older Windows APIs and JavaScript in very old engines) struggle with pre-1970 dates, and JavaScript's Date range is roughly ±273,790 years around 1970.",
+  ],
 ];
 
 const faqJsonLd = {
@@ -187,6 +195,72 @@ export default function EpochConverterPage() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* CODE REFERENCE */}
+      <section className="py-16 sm:py-20 bg-white border-t border-stone-100">
+        <div className="max-w-3xl mx-auto px-4">
+          <SectionHead eyebrow="Cheat sheet" title="Epoch time in code — and the key durations" />
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+              <thead>
+                <tr className="bg-orange-50 text-stone-900">
+                  <th className="px-4 py-3 font-bold">Language</th>
+                  <th className="px-4 py-3 font-bold">Current epoch (seconds)</th>
+                  <th className="px-4 py-3 font-bold">Timestamp → date</th>
+                </tr>
+              </thead>
+              <tbody className="text-stone-600">
+                {[
+                  ["JavaScript", "Math.floor(Date.now() / 1000)", "new Date(1762300800 * 1000)"],
+                  ["Python", "int(time.time())", "datetime.fromtimestamp(1762300800, timezone.utc)"],
+                  ["SQL (PostgreSQL)", "EXTRACT(EPOCH FROM now())", "to_timestamp(1762300800)"],
+                  ["SQL (MySQL)", "UNIX_TIMESTAMP()", "FROM_UNIXTIME(1762300800)"],
+                  ["PHP", "time()", "date('Y-m-d H:i:s', 1762300800)"],
+                  ["Shell", "date +%s", "date -d @1762300800 (Linux)"],
+                ].map(([lang, now, conv]) => (
+                  <tr key={lang} className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">{lang}</td>
+                    <td className="px-4 py-2.5 font-mono text-[13px]">{now}</td>
+                    <td className="px-4 py-2.5 font-mono text-[13px]">{conv}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="overflow-x-auto mt-6">
+            <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+              <thead>
+                <tr className="bg-orange-50 text-stone-900">
+                  <th className="px-4 py-3 font-bold">Duration</th>
+                  <th className="px-4 py-3 font-bold">Seconds</th>
+                  <th className="px-4 py-3 font-bold">Milliseconds</th>
+                </tr>
+              </thead>
+              <tbody className="text-stone-600">
+                {[
+                  ["1 minute", "60", "60,000"],
+                  ["1 hour", "3,600", "3,600,000"],
+                  ["1 day", "86,400", "86,400,000"],
+                  ["1 week", "604,800", "604,800,000"],
+                  ["1 year (365 days)", "31,536,000", "31,536,000,000"],
+                ].map(([dur, sec, ms]) => (
+                  <tr key={dur} className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">{dur}</td>
+                    <td className="px-4 py-2.5">{sec}</td>
+                    <td className="px-4 py-2.5">{ms}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-6 text-stone-600 leading-relaxed">
+            One more number worth knowing: <strong className="text-stone-900">2,147,483,647</strong> —
+            the largest signed 32-bit epoch value — is 19 January 2038 at 03:14:07 UTC, the moment the
+            Year 2038 problem bites. And <strong className="text-stone-900">1,000,000,000</strong> was
+            9 September 2001, a date old Unix hands still celebrate as the “billennium”.
+          </p>
         </div>
       </section>
 

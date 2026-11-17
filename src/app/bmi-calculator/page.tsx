@@ -80,6 +80,22 @@ const FAQS: [string, string][] = [
     "Is the BMI Calculator free? Is my data stored?",
     "Yes, completely free with no sign-up. Your height and weight are processed in your browser only — nothing is sent to or stored on our servers.",
   ],
+  [
+    "Can I use BMI during pregnancy?",
+    "Not in the usual way. Weight gain is expected and necessary in pregnancy, so the adult BMI categories do not apply to a pregnant weight. What is used instead is your pre-pregnancy BMI, which sets the recommended total gain range (for a healthy-weight starting BMI, the Institute of Medicine guidance is about 25–35 lb). Track the gain with your midwife or obstetrician rather than chasing a BMI number.",
+  ],
+  [
+    "How much weight would I need to lose or gain to reach the healthy range?",
+    "Work from the healthy range for your height, which this calculator prints next to your result. Example: at 5′9″ the healthy range is roughly 125–168 lb, so at 190 lb the first milestone is about 22 lb to reach the top of the healthy band — not the whole distance at once. The same arithmetic works upwards: at 5′9″ and 115 lb, about 10 lb gained reaches the bottom of the range. A sustainable pace is generally 1–2 lb a week; discuss your own target with a clinician.",
+  ],
+  [
+    "Is BMI interpreted differently for men and women?",
+    "The formula and the adult cut-offs are identical for men and women, which is one of BMI's known simplifications: at the same BMI, women on average carry more body fat than men, and older adults more than younger ones. That is why clinicians treat BMI as a screen for both sexes and add waist circumference — risk rises above roughly 102 cm (40 in) for men and 88 cm (35 in) for women — before drawing conclusions.",
+  ],
+  [
+    "What is BMI Prime?",
+    "BMI Prime expresses your BMI as a ratio of the top of the healthy range: BMI ÷ 25. A BMI of 23.0 gives a Prime of 0.92 — you are at 92% of the upper healthy limit. Prime below 1.00 is in or under the healthy band, 1.00–1.19 corresponds to overweight, and 1.20 and above to obese. Some clinicians prefer it because 'how far from the boundary' is easier to discuss than the raw index.",
+  ],
 ];
 
 const faqJsonLd = {
@@ -166,6 +182,61 @@ export default function BmiCalculatorPage() {
                 problems. A screening flag to discuss with a doctor — not a character judgement.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CATEGORY TABLE */}
+      <section className="py-16 sm:py-20 bg-white border-t border-stone-100">
+        <div className="max-w-3xl mx-auto px-4">
+          <SectionHead
+            eyebrow="The full table"
+            title="All six bands — including the obesity classes"
+            sub="The four cards above simplify one band: obesity is officially split into three classes, and the WHO sets lower action points for many Asian populations."
+          />
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+              <thead>
+                <tr className="bg-orange-50 text-stone-900">
+                  <th className="px-4 py-3 font-bold">Category</th>
+                  <th className="px-4 py-3 font-bold">BMI range</th>
+                  <th className="px-4 py-3 font-bold">BMI Prime</th>
+                </tr>
+              </thead>
+              <tbody className="text-stone-600">
+                {[
+                  ["Underweight", "Below 18.5", "Below 0.74"],
+                  ["Healthy weight", "18.5 – 24.9", "0.74 – 0.99"],
+                  ["Overweight", "25.0 – 29.9", "1.00 – 1.19"],
+                  ["Obese — Class I", "30.0 – 34.9", "1.20 – 1.39"],
+                  ["Obese — Class II", "35.0 – 39.9", "1.40 – 1.59"],
+                  ["Obese — Class III", "40.0 and above", "1.60 and above"],
+                ].map(([cat, range, prime]) => (
+                  <tr key={cat} className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">{cat}</td>
+                    <td className="px-4 py-2.5">{range}</td>
+                    <td className="px-4 py-2.5">{prime}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="space-y-5 text-stone-600 leading-relaxed mt-8">
+            <p>
+              <strong className="text-stone-900">Asian cut-offs are lower.</strong> A WHO expert
+              consultation found that many Asian populations carry higher health risk at the same BMI,
+              and set additional public-health action points: increased risk from a BMI of{" "}
+              <strong className="text-stone-900">23</strong>, and high risk from{" "}
+              <strong className="text-stone-900">27.5</strong>. Several Asian countries use 23 and 27.5
+              as their overweight and obesity thresholds.
+            </p>
+            <p>
+              <strong className="text-stone-900">Worked example:</strong> at 5′10″ (1.778 m) and 160 lb
+              (72.6 kg), BMI = 72.6 ÷ 1.778² = <strong className="text-stone-900">23.0</strong> —
+              healthy weight, BMI Prime 0.92. The healthy range at that height runs from about 129 lb
+              to 174 lb. Categories and ranges on this page follow the World Health Organization and
+              the US Centers for Disease Control and Prevention (CDC).
+            </p>
           </div>
         </div>
       </section>

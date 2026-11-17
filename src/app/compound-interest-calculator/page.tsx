@@ -76,6 +76,14 @@ const FAQS: [string, string][] = [
     "Daily vs monthly vs annual compounding: how much does it matter?",
     "Less than the rate or the years. At 5%, $10,000 over 10 years: $16,288.95 compounded annually, about $16,470 monthly, about $16,487 daily — the effective APY rises from 5.00% to about 5.12%. Worth having, never worth chasing at the expense of a better headline rate. The calculator shows the APY for your chosen frequency so products quoted differently can be compared cleanly.",
   ],
+  [
+    "What is the Rule of 72?",
+    "Divide 72 by your annual return to estimate how many years money takes to double: at 5% about 14.4 years, at 8% about 9 years, at 3% about 24 years. It works in reverse too — money sitting idle at 3% inflation halves in purchasing power in about 24 years. The exact doubling time is ln(2) ÷ ln(1 + r), which the Rule of 72 approximates within a few percent for rates between 2% and 12% — close enough for planning, and this calculator gives you the exact curve when you need it.",
+  ],
+  [
+    "How do I calculate compound interest in Excel or Google Sheets?",
+    "Three ways. The FV function: =FV(rate, years, 0, -principal) — for example =FV(5%, 10, 0, -10000) returns $16,288.95. The direct formula: =10000*(1+5%)^10. With monthly contributions: =FV(5%/12, 240, -200, -10000) returns about $109,333 for $200 a month over 20 years. Mind the signs: money you pay in is negative, the future value comes back positive. The advantage of the calculator above is the extras a spreadsheet makes you build by hand — tax drag, inflation adjustment and the year-by-year table.",
+  ],
 ];
 
 const faqJsonLd = {
@@ -221,6 +229,79 @@ export default function CompoundInterestPage() {
             Prefer email? <a href="mailto:neilsonsmarry@gmail.com" className="font-semibold text-orange-700 hover:text-orange-800">neilsonsmarry@gmail.com</a>
             {" "}· Or browse our <Link href="/services" className="font-semibold text-orange-700 hover:text-orange-800">services</Link> , <Link href="/percentage-calculator" className="font-semibold text-orange-700 hover:text-orange-800">percentage calculator</Link> and <Link href="/tools" className="font-semibold text-orange-700 hover:text-orange-800">free tools</Link>.
           </p>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20 bg-white border-t border-stone-100">
+        <div className="max-w-3xl mx-auto px-4">
+          <SectionHead eyebrow="Quick checks" title="The Rule of 72 — and compound vs simple" />
+          <div className="space-y-5 text-stone-600 leading-relaxed">
+            <p>
+              <strong className="text-stone-900">Rule of 72:</strong> years to double ≈ 72 ÷ annual
+              return. It is the fastest sanity check on any savings claim — a product promising to
+              double your money in 5 years is promising roughly a 14.4% annual return, which should
+              prompt hard questions.
+            </p>
+          </div>
+          <div className="overflow-x-auto mt-6">
+            <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+              <thead>
+                <tr className="bg-orange-50 text-stone-900">
+                  <th className="px-4 py-3 font-bold">Annual return</th>
+                  <th className="px-4 py-3 font-bold">Years to double</th>
+                  <th className="px-4 py-3 font-bold">$10,000 after 20 years</th>
+                </tr>
+              </thead>
+              <tbody className="text-stone-600">
+                {[
+                  ["3%", "24.0", "$18,061"],
+                  ["4%", "18.0", "$21,911"],
+                  ["5%", "14.4", "$26,533"],
+                  ["6%", "12.0", "$32,071"],
+                  ["8%", "9.0", "$46,610"],
+                  ["10%", "7.2", "$67,275"],
+                ].map(([rate, yrs, val]) => (
+                  <tr key={rate} className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">{rate}</td>
+                    <td className="px-4 py-2.5">{yrs}</td>
+                    <td className="px-4 py-2.5">{val}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-8 text-stone-600 leading-relaxed">
+            <strong className="text-stone-900">Simple vs compound interest</strong> — the difference is
+            whether interest itself earns interest. On $10,000 at 5%, simple interest pays a flat $500
+            a year forever; compounding pays $500, then $525, then $551… The gap is small early and
+            decisive late:
+          </p>
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+              <thead>
+                <tr className="bg-orange-50 text-stone-900">
+                  <th className="px-4 py-3 font-bold">Years</th>
+                  <th className="px-4 py-3 font-bold">Simple interest</th>
+                  <th className="px-4 py-3 font-bold">Compound interest</th>
+                  <th className="px-4 py-3 font-bold">Compounding bonus</th>
+                </tr>
+              </thead>
+              <tbody className="text-stone-600">
+                {[
+                  ["10", "$15,000", "$16,289", "+$1,289"],
+                  ["20", "$20,000", "$26,533", "+$6,533"],
+                  ["30", "$25,000", "$43,219", "+$18,219"],
+                ].map(([yrs, simple, comp, bonus]) => (
+                  <tr key={yrs} className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">{yrs}</td>
+                    <td className="px-4 py-2.5">{simple}</td>
+                    <td className="px-4 py-2.5">{comp}</td>
+                    <td className="px-4 py-2.5">{bonus}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 

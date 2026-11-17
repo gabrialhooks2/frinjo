@@ -37,7 +37,7 @@ const appJsonLd = {
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   author: { "@type": "Organization", name: "WebStore Pro", url: "https://frinjo.me" },
   description:
-    "A free online countdown timer with an audible alarm. It accepts any duration up to 999 minutes, offers one-tap preset pages (1, 2, 3, 5, 10, 15, 20, 25, 30, 45 and 60 minutes, including a 25-minute Pomodoro timer), keeps counting accurately in a background tab by tracking the target end time rather than counting ticks, displays the remaining time in the browser tab title, and signals completion with sound, vibration on supported phones and a title change. No account or download is required.",
+    "A free online countdown timer with an audible alarm. It accepts any duration — set in hours, minutes and seconds — up to 999 minutes total, offers one-tap preset pages (1, 2, 3, 5, 10, 15, 20, 25, 30, 45 and 60 minutes, including a 25-minute Pomodoro timer), keeps counting accurately in a background tab by tracking the target end time rather than counting ticks, displays the remaining time in the browser tab title, and signals completion with sound, vibration on supported phones and a title change. No account or download is required.",
 };
 
 const breadcrumbJsonLd = {
@@ -53,7 +53,7 @@ const breadcrumbJsonLd = {
 const FAQS: [string, string][] = [
   [
     "How do I set a countdown timer?",
-    "Type the number of minutes and press Set & start — or tap one of the preset timers (1, 5, 10, 15, 20, 25, 30, 45 or 60 minutes) to open a page that is already set to that length. Press Start and the countdown begins; Pause and Resume work at any point, and Reset returns to the full duration.",
+    "Enter the hours, minutes and seconds you need and press Set & start — or tap one of the preset timers (1, 5, 10, 15, 20, 25, 30, 45 or 60 minutes) to open a page that is already set to that length. Press Start and the countdown begins; Pause and Resume work at any point, and Reset returns to the full duration.",
   ],
   [
     "Does the timer keep running if I switch tabs?",
@@ -70,6 +70,14 @@ const FAQS: [string, string][] = [
   [
     "What is the longest countdown I can set?",
     "999 minutes (about 16.6 hours). For multi-hour waits most people use the 60-minute preset repeatedly or set a custom duration — the timer only needs this tab to stay open, not active.",
+  ],
+  [
+    "Can I count down to a specific date or time — like a birthday or New Year?",
+    "This timer counts durations (the next 25 minutes), not the gap to a calendar date. For a date days or weeks away, a browser tab is the wrong tool: use your calendar app's reminder for the alert, and our Days Between Dates Calculator to see how many days are left until the event. If the date is today, just work out the hours and minutes from now and set those here.",
+  ],
+  [
+    "Will the alarm sound if my phone screen locks?",
+    "Be careful with this one. On desktop, a background tab stays accurate and the tab title flashes at zero, but the sound still needs the browser to be running. On phones, a locked screen can suspend the browser entirely, which delays the alarm until you wake the device. For a can't-miss alarm — medication, a flight, the oven while you nap — use your phone's built-in Clock app as well. For anything on-screen while you work, cook or present, this timer is the right tool.",
   ],
   [
     "Is the Countdown Timer free?",
@@ -163,6 +171,52 @@ export default function CountdownTimerPage() {
             </Link>
             .
           </p>
+        </div>
+      </section>
+
+      {/* WHICH TIMER + USE CASES */}
+      <section className="py-16 sm:py-20 bg-white border-t border-stone-100">
+        <div className="max-w-3xl mx-auto px-4">
+          <SectionHead eyebrow="Pick the right tool" title="Countdown, stopwatch, Pomodoro or alarm clock?" />
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+              <thead>
+                <tr className="bg-orange-50 text-stone-900">
+                  <th className="px-4 py-3 font-bold">Tool</th>
+                  <th className="px-4 py-3 font-bold">How it runs</th>
+                  <th className="px-4 py-3 font-bold">Best for</th>
+                </tr>
+              </thead>
+              <tbody className="text-stone-600">
+                {[
+                  ["Countdown timer (this page)", "Counts down from a set duration to zero, then alarms", "Cooking, workouts, exams, breaks, presentations"],
+                  ["Stopwatch", "Counts up from zero, open-ended, with laps", "Timing how long something takes — runs, laps, tasks"],
+                  ["Pomodoro timer", "Fixed cycles: 25 min focus + 5 min break", "Deep-work study and desk sessions — the 25-min preset here"],
+                  ["Alarm clock", "Fires at a set clock time, whatever you are doing", "Waking up, medication, appointments"],
+                ].map(([tool, how, best]) => (
+                  <tr key={tool} className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">{tool}</td>
+                    <td className="px-4 py-2.5">{how}</td>
+                    <td className="px-4 py-2.5">{best}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="space-y-5 text-stone-600 leading-relaxed mt-8">
+            <p>
+              <strong className="text-stone-900">In the kitchen:</strong> pasta at 9 minutes, eggs at
+              6½, a resting steak at 5 — set the seconds field too, not just whole minutes.{" "}
+              <strong className="text-stone-900">In the gym:</strong> a full Tabata block is 8 rounds of
+              20 seconds on, 10 seconds off — 4 minutes total; EMOM and interval work run just as well
+              off the presets. <strong className="text-stone-900">In the classroom:</strong> put the
+              timer on the projector for quizzes and timed writing — the giant digits and tab title do
+              the disciplining for you. <strong className="text-stone-900">In meetings:</strong> a
+              visible 15-minute countdown ends rambling status updates better than any agenda note. And
+              for <strong className="text-stone-900">focus</strong>, the 25-minute Pomodoro preset plus
+              the 5-minute break preset is the classic pairing.
+            </p>
+          </div>
         </div>
       </section>
 

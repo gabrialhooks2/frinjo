@@ -73,6 +73,14 @@ const FAQS: [string, string][] = [
     "Take 10% by moving the decimal point one place left ($86.40 → $8.64), then double it → $17.28. For 15%, take 10% and add half of it ($8.64 + $4.32 = $12.96). For 18%, take 20% and subtract 2% (a tenth of the 20% figure).",
   ],
   [
+    "Do I still tip if a service charge or automatic gratuity is on the bill?",
+    "Check before you add anything. Restaurants often add an automatic gratuity of 18–20% for large parties (usually 6–8 or more), and some add a service charge to every bill — in both cases the tip is already covered and adding another 20% means tipping twice. Note that a generic 'service charge' is not legally required to go to your server in most states, so for exceptional service a small extra in cash (a few percent) is the way to reward the person directly.",
+  ],
+  [
+    "What is the 'No Tax on Tips' deduction for workers?",
+    "For tax years 2025–2028, US workers in traditionally tipped occupations can deduct up to $25,000 of qualified tips from their federal taxable income. It is a deduction, not an exemption: tips are still reported and still subject to payroll taxes, and the deduction phases out for higher earners (starting at $150,000 of modified AGI for single filers). If you earn tips, our No Tax on Tips Calculator estimates what the deduction is worth to you.",
+  ],
+  [
     "Is tipping expected outside the US?",
     "It varies a lot. Much of Europe includes service in the price (round up or leave 5–10% for great service in Germany/France; UK restaurants often add a 10–12.5% service charge). In Japan tipping is not customary and can confuse. In Canada and Mexico, 15–20% is normal, similar to the US.",
   ],
@@ -180,6 +188,62 @@ export default function TipCalculatorPage() {
                     <span className="font-bold text-stone-900 text-right">{how}</span>
                   </div>
                 ))}
+              </div>
+            </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              <div>
+                <p className="font-bold text-stone-900 mb-3">Quick table: a $50 bill</p>
+                <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+                  <thead>
+                    <tr className="bg-orange-50 text-stone-900">
+                      <th className="px-4 py-2.5 font-bold">Tip %</th>
+                      <th className="px-4 py-2.5 font-bold">Tip</th>
+                      <th className="px-4 py-2.5 font-bold">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      ["10%", "$5.00", "$55.00"],
+                      ["15%", "$7.50", "$57.50"],
+                      ["18%", "$9.00", "$59.00"],
+                      ["20%", "$10.00", "$60.00"],
+                      ["25%", "$12.50", "$62.50"],
+                    ].map(([pct, tip, total]) => (
+                      <tr key={pct} className="border-t border-stone-200">
+                        <td className="px-4 py-2 font-bold text-stone-900">{pct}</td>
+                        <td className="px-4 py-2">{tip}</td>
+                        <td className="px-4 py-2">{total}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <p className="font-bold text-stone-900 mb-3">Tipping around the world</p>
+                <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+                  <thead>
+                    <tr className="bg-orange-50 text-stone-900">
+                      <th className="px-4 py-2.5 font-bold">Place</th>
+                      <th className="px-4 py-2.5 font-bold">Restaurant norm</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      ["United States", "18–22%, expected"],
+                      ["Canada", "15–20%"],
+                      ["Mexico", "10–15% (propina)"],
+                      ["United Kingdom", "10–12.5% service charge often added"],
+                      ["Germany / France", "Included — round up or 5–10%"],
+                      ["Australia", "Not expected; 10% if exceptional"],
+                      ["Japan", "Not customary — do not tip"],
+                    ].map(([place, norm]) => (
+                      <tr key={place} className="border-t border-stone-200">
+                        <td className="px-4 py-2 font-bold text-stone-900">{place}</td>
+                        <td className="px-4 py-2">{norm}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
