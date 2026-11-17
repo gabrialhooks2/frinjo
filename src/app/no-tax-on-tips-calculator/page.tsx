@@ -233,6 +233,10 @@ export default function NoTaxTipsCalculatorPage() {
             <Link href="/car-loan-interest-deduction-calculator" className="font-semibold text-orange-400 hover:text-orange-300">
               Car Loan Interest Deduction Calculator
             </Link>{" "}
+            · check the occupation code on your W-2 with the{" "}
+            <Link href="/tipped-occupation-code-lookup" className="font-semibold text-orange-400 hover:text-orange-300">
+              Tipped Occupation Code Lookup
+            </Link>{" "}
             · and for working out the tip itself, the{" "}
             <Link href="/tip-calculator" className="font-semibold text-orange-400 hover:text-orange-300">
               Tip Calculator

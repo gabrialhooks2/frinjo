@@ -503,6 +503,18 @@ const TOOLS: Tool[] = [
     desc: "Up to $10,000 of interest on a new US-assembled car is deductible: run the six eligibility checks, then the cap and the $200-per-$1,000 phase-out. Free, no sign-up.",
   },
   {
+    name: "W-2 Box 12 Code TT Checker",
+    href: "/w2-box-12-code-tt-checker",
+    tag: "Tax · W-2 2026",
+    desc: "New for 2026 W-2s: rebuild your expected overtime premium and compare it with the Box 12 code TT figure — if TT is too low, your deduction is capped at the wrong number. Free, no sign-up.",
+  },
+  {
+    name: "Tipped Occupation Code Lookup",
+    href: "/tipped-occupation-code-lookup",
+    tag: "Tax · W-2 2026",
+    desc: "All 71 official TTOC codes for W-2 Box 14b in one searchable list, plus a checker for the code on your own W-2 — a wrong code or a 000 can kill your $25,000 tips deduction. Free, no sign-up.",
+  },
+  {
     name: "Temp Mail",
     href: "https://tempmaill.tech",
     external: true,
