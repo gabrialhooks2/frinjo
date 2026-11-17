@@ -190,6 +190,7 @@ export default function CalculadoraIvaPage() {
                 retiene 1,066.67 de IVA (dos tercios) y 1,000 de ISR (10% de la base), así que el total que
                 cobra el profesional es <strong>9,533.33</strong>, no 11,600. Si estás en RESICO, la
                 retención de ISR baja al 1.25%; en fletes, la retención de IVA es del 4% de la base.
+              </p>
             </div>
             <div className={card}>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-green-600 mb-3">Total en letra</p>
