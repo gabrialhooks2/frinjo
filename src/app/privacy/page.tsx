@@ -2,8 +2,6 @@ import Link from "next/link";
 import { BRAND } from "@/lib/content";
 import { SectionHead, btnPrimary, Icon } from "@/components/ui";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Privacy Policy",
   description: `Privacy Policy of ${BRAND.name}. How we collect, use and protect your personal information.`,

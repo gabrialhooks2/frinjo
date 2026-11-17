@@ -5,7 +5,9 @@ import { SectionHead, Icon, Stars, btnPrimary, btnOutline, btnDark } from "@/com
 import PricingCards from "@/components/PricingCards";
 import FeedbackForm from "@/components/FeedbackForm";
 
-export const dynamic = "force-dynamic";
+// ISR: portfolio/testimonials come from the DB — re-render at most hourly
+// instead of on every request.
+export const revalidate = 3600;
 
 export const metadata = {
   alternates: { canonical: "https://frinjo.me" },

@@ -2,8 +2,6 @@ import Link from "next/link";
 import { BRAND, FAQS } from "@/lib/content";
 import { SectionHead, Icon, btnPrimary, btnOutline } from "@/components/ui";
 
-export const dynamic = "force-dynamic";
-
 const FAQ_DESC = `Frequently asked questions about ${BRAND.name} website packages: delivery time, pricing (from $80), payments, admin panel, and what you need to get started.`;
 
 export const metadata = {

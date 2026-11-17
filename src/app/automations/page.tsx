@@ -2,8 +2,6 @@ import Link from "next/link";
 import { SectionHead, Icon, btnPrimary, btnOutline } from "@/components/ui";
 import AutomationDemo from "./AutomationDemo";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Business Automation Services — n8n & AI",
   description:

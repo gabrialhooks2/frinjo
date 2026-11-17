@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import "./globals.css";
-
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://frinjo.me"),
@@ -84,12 +81,20 @@ const websiteJsonLd = {
   inLanguage: "en",
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const pathname = (await headers()).get("x-pathname") || "";
-  const lang = pathname.startsWith("/es") ? "es" : pathname.startsWith("/fr") ? "fr" : "en";
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // <html lang> is corrected for /es and /fr by the inline script in <head>
+  // (runs synchronously before first paint). Reading headers() here instead
+  // forced EVERY route into per-request dynamic rendering — removed so
+  // public pages can be statically rendered / ISR-cached.
   return (
-    <html lang={lang}>
+    <html lang="en">
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var p=window.location.pathname;document.documentElement.lang=p.indexOf('/es')===0?'es':p.indexOf('/fr')===0?'fr':'en';}catch(e){}})();",
+          }}
+        />
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9075805757065172"

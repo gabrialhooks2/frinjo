@@ -7,7 +7,22 @@ import BlogContent from "@/components/BlogContent";
 import { formatDate } from "@/lib/blog";
 import { REPO_POSTS } from "@/lib/repo-posts";
 
-export const dynamic = "force-dynamic";
+// ISR: prerender known slugs at build; new slugs render once on demand and
+// are then cached, revalidating at most hourly (admin posts appear without
+// a redeploy).
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const slugs = new Set(REPO_POSTS.map((p) => p.slug));
+  try {
+    const db = await getDb();
+    const rows = await db.prepare("SELECT slug FROM blog_posts WHERE status = 'published'").all();
+    for (const r of rows) slugs.add(r.slug as string);
+  } catch {
+    // DB unreachable at build time — repo slugs still prerender.
+  }
+  return [...slugs].map((slug) => ({ slug }));
+}
 
 const SITE_URL = "https://frinjo.me";
 

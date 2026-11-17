@@ -5,7 +5,8 @@ import { REPO_POSTS } from "@/lib/repo-posts";
 
 const SITE_URL = "https://frinjo.me";
 
-export const dynamic = "force-dynamic";
+// ISR: sitemap reads blog slugs from the DB — regenerate at most hourly.
+export const revalidate = 3600;
 
 /** Hreflang clusters for pages with true language equivalents (mirrors the
  *  alternates.languages metadata on those pages). */

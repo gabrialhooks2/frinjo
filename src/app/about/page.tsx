@@ -2,8 +2,6 @@ import Link from "next/link";
 import { BRAND, PACKAGES } from "@/lib/content";
 import { SectionHead, Icon, btnPrimary, btnOutline } from "@/components/ui";
 
-export const dynamic = "force-dynamic";
-
 const ABOUT_DESC =
   "Meet Raza, the full stack web developer behind WebStore Pro. I build complete websites and web apps for small businesses worldwide with Next.js & React — admin panels, online stores, payments and WhatsApp ordering, from $80.";
 

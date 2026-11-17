@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { SectionHead, Icon, btnPrimary, btnOutline } from "@/components/ui";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "SEO Agent Kit — Open-Source AI SEO Toolkit",
   description:

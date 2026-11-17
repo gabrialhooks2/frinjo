@@ -2,8 +2,6 @@ import Link from "next/link";
 import { SERVICES } from "@/lib/content";
 import { SectionHead, Icon, btnPrimary } from "@/components/ui";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Web Development Services — Full Stack",
   description:

@@ -2,7 +2,8 @@ import Link from "next/link";
 import { getDb, mapPortfolioItem } from "@/lib/db";
 import { Icon, btnPrimary, btnOutline } from "@/components/ui";
 
-export const dynamic = "force-dynamic";
+// ISR: portfolio items come from the DB — re-render at most hourly.
+export const revalidate = 3600;
 
 export const metadata = {
   title: "Portfolio — Websites I've Built",

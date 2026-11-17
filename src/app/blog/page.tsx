@@ -5,7 +5,9 @@ import { SectionHead, Icon } from "@/components/ui";
 import { formatDate } from "@/lib/blog";
 import { REPO_POSTS, mergeRepoPosts } from "@/lib/repo-posts";
 
-export const dynamic = "force-dynamic";
+// ISR: post list comes from the DB — re-render at most hourly so new
+// admin-published posts appear without a redeploy.
+export const revalidate = 3600;
 
 const BLOG_DESC = "Practical guides on website costs, building online stores, SEO and online selling — written by Raza, the developer behind WebStore Pro.";
 

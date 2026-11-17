@@ -2,8 +2,6 @@ import { BRAND, FAQS } from "@/lib/content";
 import { SectionHead, Icon } from "@/components/ui";
 import PricingCards from "@/components/PricingCards";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Pricing — Website Packages from $80",
   description:

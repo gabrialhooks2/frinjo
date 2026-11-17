@@ -3,8 +3,6 @@ import { notFound } from "next/navigation";
 import { SERVICES, BRAND } from "@/lib/content";
 import { SectionHead, Icon, btnPrimary, btnOutline } from "@/components/ui";
 
-export const dynamic = "force-dynamic";
-
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
 }
