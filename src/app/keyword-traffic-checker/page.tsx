@@ -78,6 +78,22 @@ const FAQS: [string, string][] = [
     "What difficulty score should a small site target?",
     "Under 40 is the sweet spot: page 1 is realistic with one strong, well-targeted page. Between 40 and 60 you need a page that is clearly better than the current results. Above 60, established sites hold the SERP — target a longer-tail version of the keyword first.",
   ],
+  [
+    "What is keyword traffic?",
+    "Keyword traffic is how many searches a keyword gets — usually quoted per month — and, by extension, how many visitors a page ranking for it can expect. It is the demand side of keyword research: a keyword nobody searches cannot send you traffic no matter how easy it is to rank for. That is why this checker pairs its difficulty score with live demand signals instead of judging a keyword on difficulty alone.",
+  ],
+  [
+    "Why do traffic estimates differ between tools?",
+    "Because every tool estimates from different data. Ahrefs, Semrush and Ubersuggest each model their own keyword and clickstream databases, Google Keyword Planner groups similar keywords together and reports ranges, and this checker shows no volume estimate at all — it measures the live SERP and Google's suggestion data instead. Treat any single tool's number as a ballpark: compare the same keyword across two or three tools and trust the pattern more than the exact figure.",
+  ],
+  [
+    "Is a free keyword traffic checker accurate?",
+    "Accurate about what it measures live, yes. The SERP sample, intent and suggestion data on this page are fetched at the moment you run the check, not copied from a stale database — and the difficulty score prints every factor behind it, so you can audit the maths. What no free checker can give you is an exact monthly search volume; that data is paid. A free tool that prints a precise volume is estimating it, so judge free checkers by whether they show their sources and their working.",
+  ],
+  [
+    "How often should you check a keyword's traffic?",
+    "Once before you write for it — then re-check every few months, or sooner if your rankings or traffic move unexpectedly. Demand is seasonal (the Trends data in the report shows this clearly) and SERPs shift as competitors publish, so a keyword that scored 35 last quarter can be a different fight today. A quick re-check before you update an older page is usually enough.",
+  ],
 ];
 
 const faqJsonLd = {
@@ -167,6 +183,133 @@ export default async function KeywordCheckerPage({
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* STEP BY STEP */}
+      <section className="py-16 sm:py-20 bg-stone-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <SectionHead
+            eyebrow="Guide"
+            title="How to Check a Keyword's Traffic (Step by Step)"
+            sub="Five minutes, five steps. This is the exact routine to run before you write a page, buy a domain or brief a writer — using the free checker above."
+          />
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 text-left">
+            {[
+              [
+                "1",
+                "Start with a seed keyword",
+                "One word or short phrase your customers would type into Google — a product, a service or a problem they have. Start broad if you are unsure; the report's related long-tail keywords will narrow it down for you.",
+              ],
+              [
+                "2",
+                "Enter it above and pick your country",
+                "Competition and demand are local. The same keyword can be wide open in one market and locked up by big brands in another, so always check the country you actually want the traffic from.",
+              ],
+              [
+                "3",
+                "Read the difficulty score",
+                "Under 40, a small site can realistically reach page 1 with one strong, well-targeted page. Between 40 and 60 you have to clearly out-publish the current results. Above 60, target a longer-tail version of the keyword first and come back for the head term later.",
+              ],
+              [
+                "4",
+                "Check the demand signals",
+                "Autocomplete suggestions are real queries Google completes because people type them, and the Trends index shows whether interest is rising, flat or seasonal. No suggestions at all usually means no real demand — however easy the keyword looks.",
+              ],
+              [
+                "5",
+                "Study page 1, then decide",
+                "The live SERP sample is the exact set of pages you would have to beat. Check whether their intent matches what searchers want, then target the keyword you can serve better than all ten of them — and write that page.",
+              ],
+            ].map(([num, head, body]) => (
+              <div key={num} className={card}>
+                <div className="font-display text-4xl font-bold text-orange-600 mb-3">{num}</div>
+                <h3 className="font-display text-xl font-bold text-stone-900 mb-3">{head}</h3>
+                <p className="text-stone-600 leading-relaxed">{body}</p>
+              </div>
+            ))}
+            <div className="rounded-3xl border border-orange-200 bg-orange-50 p-8 flex flex-col justify-center">
+              <h3 className="font-display text-xl font-bold text-stone-900 mb-3">Run your first check now</h3>
+              <p className="text-stone-600 leading-relaxed mb-5">
+                Free, no sign-up, and the full report — score, SERP sample, demand signals and related
+                keywords — is generated live for your keyword.
+              </p>
+              <div>
+                <a href="#top" className={btnPrimary}>
+                  Check a keyword <Icon name="arrow" className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TOOLS COMPARED */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <SectionHead
+            eyebrow="Compared"
+            title="Keyword Traffic Checker Tools Compared"
+            sub="The honest differences between the tools people use for this job. The paid databases are stronger on volume data; this checker is built to show its working for free."
+          />
+          <div className="overflow-x-auto text-left">
+            <table className="w-full text-left text-sm border border-stone-200 rounded-2xl overflow-hidden">
+              <thead>
+                <tr className="bg-orange-50 text-stone-900">
+                  <th className="px-4 py-3 font-bold">Tool</th>
+                  <th className="px-4 py-3 font-bold">Cost</th>
+                  <th className="px-4 py-3 font-bold">What it shows</th>
+                  <th className="px-4 py-3 font-bold">Limits</th>
+                </tr>
+              </thead>
+              <tbody className="text-stone-600">
+                {[
+                  [
+                    "Frinjo Keyword Traffic Checker (this page)",
+                    "Free, no sign-up",
+                    "Live SERP competition sample for your country, difficulty score out of 100 with every factor's points shown, search intent, Google Autocomplete demand signals and related long-tail keywords",
+                    "No exact monthly search volume — by design, because no free source publishes it",
+                  ],
+                  [
+                    "Ahrefs",
+                    "Free keyword generator; full data paid",
+                    "Search volume estimates, keyword difficulty and keyword ideas from a large commercial database",
+                    "The free generator shows only limited data; full reports need a paid plan",
+                  ],
+                  [
+                    "Semrush",
+                    "Free account available; full data paid",
+                    "Keyword overview with volume and difficulty data, related keywords and competitive research",
+                    "Free accounts come with daily usage limits; the full database is paid",
+                  ],
+                  [
+                    "Ubersuggest",
+                    "Free tier available; full data paid",
+                    "Search volume estimates, difficulty scores and keyword ideas",
+                    "The free tier has daily limits; more data and history need a paid plan",
+                  ],
+                  [
+                    "Google Keyword Planner",
+                    "Free with a Google Ads account",
+                    "Google's own search volume ranges and advertiser competition data",
+                    "Shows ranges rather than exact volumes unless you actively run ads; built for advertisers, not content planning",
+                  ],
+                ].map(([tool, cost, shows, limits]) => (
+                  <tr key={tool} className="border-t border-stone-200">
+                    <td className="px-4 py-2.5 font-bold text-stone-900">{tool}</td>
+                    <td className="px-4 py-2.5">{cost}</td>
+                    <td className="px-4 py-2.5">{shows}</td>
+                    <td className="px-4 py-2.5">{limits}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-6 text-stone-600 leading-relaxed max-w-3xl">
+            A practical workflow: shortlist keywords with the free checker above, and if you already pay
+            for Ahrefs or Semrush, cross-check their volume estimates before committing to a big piece of
+            content. Where the tools disagree, trust the live SERP — it is the page you actually have to beat.
+          </p>
         </div>
       </section>
 
