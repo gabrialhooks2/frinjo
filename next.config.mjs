@@ -8,6 +8,11 @@ const nextConfig = {
         destination: "/services/full-stack-web-development",
         permanent: true,
       },
+      {
+        source: "/automations",
+        destination: "/seo",
+        permanent: true,
+      },
     ];
   },
 };

@@ -384,7 +384,7 @@ export default function SeoAgentKitPage() {
           </div>
           <p className="mt-5 text-sm text-stone-500">
             Prefer email? <a href="mailto:neilsonsmarry@gmail.com" className="font-semibold text-orange-700 hover:text-orange-800">neilsonsmarry@gmail.com</a>
-            {" "}· Or browse our <Link href="/services" className="font-semibold text-orange-700 hover:text-orange-800">services</Link> and <Link href="/automations" className="font-semibold text-orange-700 hover:text-orange-800">automations</Link>.
+            {" "}· Or browse our <Link href="/services" className="font-semibold text-orange-700 hover:text-orange-800">services</Link> and <Link href="/seo" className="font-semibold text-orange-700 hover:text-orange-800">SEO agents</Link>.
           </p>
         </div>
       </section>

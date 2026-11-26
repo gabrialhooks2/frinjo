@@ -9,7 +9,7 @@ import { SERVICES } from "@/lib/content";
 const MENU = [
   { label: "SERVICES", href: "/services", dropdown: true },
   { label: "PORTFOLIO", href: "/portfolio" },
-  { label: "AUTOMATIONS", href: "/automations", tag: "NEW" },
+  { label: "SEO", href: "/seo", tag: "NEW" },
   { label: "Tools", href: "/tools" },
   { label: "PRICING", href: "/pricing" },
   { label: "CONTACT", href: "/contact" },
