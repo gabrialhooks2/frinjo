@@ -284,6 +284,84 @@ const LIVE_TOOLS = [
     href: "/adsense-low-value-content-checker",
     desc: "Diagnoses the thin and low-value content patterns that get AdSense applications rejected — and tells you what to fix before you reapply.",
   },
+  {
+    icon: "bolt",
+    name: "Technical SEO Checker",
+    href: "/technical-seo-checker",
+    desc: "Live technical scan of any URL: status, HTTPS, redirects, response time, canonicals, robots meta, and robots.txt / sitemap reachability — scored out of 100.",
+  },
+  {
+    icon: "dashboard",
+    name: "Schema Checker",
+    href: "/schema-checker",
+    desc: "Extracts every JSON-LD block on a page, validates the JSON, lists schema types and tests required fields — free and instant.",
+  },
+  {
+    icon: "globe",
+    name: "Sitemap Checker",
+    href: "/sitemap-checker",
+    desc: "Fetches any site's XML sitemap, counts URLs, follows sitemap indexes, checks lastmod dates and spot-checks that listed URLs are live.",
+  },
+  {
+    icon: "search",
+    name: "On-Page SEO Checker",
+    href: "/on-page-seo-checker",
+    desc: "Scores a page's title and description length, heading structure, word count, internal/external links and image alt text — live.",
+  },
+  {
+    icon: "card",
+    name: "Meta Tag Checker",
+    href: "/meta-tag-checker",
+    desc: "Shows the exact meta values any page serves: title, description, canonical, Open Graph, Twitter card, robots, viewport and favicon.",
+  },
+  {
+    icon: "shield",
+    name: "Robots.txt Checker",
+    href: "/robots-txt-checker",
+    desc: "Parses any robots.txt, decodes every user-agent group and tests whether GPTBot, ClaudeBot and other AI crawlers are blocked.",
+  },
+  {
+    icon: "rocket",
+    name: "AI Readiness Checker",
+    href: "/ai-readiness-checker",
+    desc: "BotView-lite: llms.txt, AI-crawler access, structured data and readable text — can AI search engines read and cite your site?",
+  },
+  {
+    icon: "star",
+    name: "Image SEO Checker",
+    href: "/image-seo-checker",
+    desc: "Audits every image on a page: alt text coverage, WebP/AVIF formats, lazy loading and width/height attributes.",
+  },
+  {
+    icon: "globe",
+    name: "Local SEO Checker",
+    href: "/local-seo-checker",
+    desc: "Tests a local business homepage for LocalBusiness schema, phone and address (NAP) signals, a Google Maps link, opening hours and review schema.",
+  },
+  {
+    icon: "arrow",
+    name: "Backlink Checker",
+    href: "/backlink-checker",
+    desc: "Audits a page's outgoing link profile — external links, anchors, follow/nofollow and domains. (Referring domains need a paid index; no fake counts.)",
+  },
+  {
+    icon: "dashboard",
+    name: "Competitor Checker",
+    href: "/competitor-checker",
+    desc: "Your page vs a competitor's, side by side: titles, word count, headings, schema, links, response time — and a score for each.",
+  },
+  {
+    icon: "search",
+    name: "Internal Link Checker",
+    href: "/internal-link-checker",
+    desc: "Lists every internal link with its anchor text, counts unique targets, flags self-links and generic anchors, and spot-checks for broken links.",
+  },
+  {
+    icon: "chat",
+    name: "Content Brief Generator",
+    href: "/content-brief-generator",
+    desc: "Enter a keyword (optionally with your page URL) and get a writer-ready brief: word-count target, H2 outline, questions, schema and link plan.",
+  },
 ];
 
 const SCORE_WEIGHTS = [
