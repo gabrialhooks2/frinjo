@@ -296,6 +296,15 @@ const SCORE_WEIGHTS = [
   ["Images", "5%"],
 ];
 
+const COMPARISON: [string, string, string, string][] = [
+  ["Coverage", "Whole site — 14 disciplines, 100+ checks", "One URL, one discipline at a time", "Whole site, but sampled by hand"],
+  ["Evidence", "Every finding quotes what was actually fetched", "Generic warnings with no page-level proof", "Only as good as the auditor's notes"],
+  ["Cross-checking", "Agents verify each other's findings before scoring", "None — a single pass against a fixed rulebook", "Limited by time and attention"],
+  ["Action plan", "Phased plan, Critical → Low, quick wins flagged", "A score and a list of generic tips", "Yes, but quality and timelines vary"],
+  ["Speed", "Full audit delivered in hours", "Seconds — for one page at a time", "Days to weeks"],
+  ["Cost", "Audit free; fixes quoted after you see the report", "Free tier, full report behind a paywall", "Typically hundreds to thousands of dollars"],
+];
+
 const STEPS = [
   {
     t: "Share your URL",
@@ -402,6 +411,13 @@ export default function SeoPage() {
               </div>
             </div>
           </div>
+          <p className="mt-8 max-w-3xl text-stone-600 leading-relaxed text-[15px]">
+            One more step runs before your score is calculated: the verification pass. The orchestrator
+            re-fetches the pages behind every Critical and High finding and confirms each problem still
+            reproduces. Anything that cannot be reproduced — a one-off server hiccup, a stale crawl
+            artifact — is removed from the report. The Health Score you receive is a measurement of your
+            site as it stands today, not a snapshot of one crawl&apos;s bad luck.
+          </p>
         </div>
       </section>
 
@@ -434,6 +450,68 @@ export default function SeoPage() {
                 </ul>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY AGENTS BEAT SINGLE TOOLS */}
+      <section className="py-16 sm:py-20 bg-white border-t border-stone-100">
+        <div className="max-w-6xl mx-auto px-4">
+          <SectionHead
+            eyebrow="Why agents, not scanners"
+            title="Why an agent-based audit finds what single tools miss"
+            sub="A single-purpose checker sees one page and one rulebook. Fourteen specialists see the whole site — and they check each other's work."
+          />
+          <div className="max-w-3xl space-y-5 text-stone-600 leading-relaxed text-[15px]">
+            <p>
+              Most SEO checkers are built around a single moment: you paste in one URL, the tool runs a
+              fixed list of generic rules, and you get a score. That model has a structural blind spot,
+              because real SEO problems rarely live on one page. A canonical tag only matters in relation
+              to what your sitemap declares. A thin page only hurts when stronger pages link to it with
+              the wrong anchor text. A schema error only costs you traffic when a competitor&apos;s valid
+              markup wins the rich result your page was eligible for. Every one of those failures lives
+              between pages — exactly where a single-page scan cannot look.
+            </p>
+            <p>
+              The agents work the opposite way: no finding reaches your report until it has survived a
+              cross-check from another specialist. When the Sitemap &amp; Indexing Agent reports a URL as
+              submitted, the Technical SEO Agent independently fetches it and confirms the status code and
+              canonical agree. When the Content Quality Agent flags a page as thin, the Internal Linking
+              Agent checks how the site itself treats that page — a thin page holding forty internal links
+              is a ranking risk to rewrite, while a thin page with none is a merge-or-delete candidate.
+              When the Performance Agent finds a slow template, it re-measures after the fix, so any
+              improvement in your report is a fresh measurement, not a promise.
+            </p>
+            <p>
+              The third difference is evidence. A warning like &ldquo;improve content quality&rdquo;
+              cannot be acted on, disputed or verified. An agent finding names the exact page, quotes
+              what was actually fetched — the response header, the status code, the missing schema
+              property, the timing — and states the specific fix. If two agents disagree, the orchestrator
+              re-fetches the page and lets the evidence decide. That discipline is why the audit ends in a
+              plan you can hand to any developer, instead of a score you have to take on faith.
+            </p>
+          </div>
+          <div className="mt-10 overflow-x-auto rounded-3xl border border-stone-200">
+            <table className="w-full min-w-[680px] text-left text-sm">
+              <thead>
+                <tr className="bg-orange-50 text-stone-900">
+                  <th className="px-5 py-4 font-display font-bold">What matters</th>
+                  <th className="px-5 py-4 font-display font-bold text-orange-800">Frinjo SEO Agents</th>
+                  <th className="px-5 py-4 font-display font-bold">Single-purpose tools</th>
+                  <th className="px-5 py-4 font-display font-bold">Manual audit</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-stone-100 bg-white">
+                {COMPARISON.map(([label, agents, tools, manual]) => (
+                  <tr key={label} className="align-top">
+                    <th className="px-5 py-4 font-bold text-stone-900">{label}</th>
+                    <td className="px-5 py-4 font-semibold text-stone-700">{agents}</td>
+                    <td className="px-5 py-4 text-stone-600">{tools}</td>
+                    <td className="px-5 py-4 text-stone-600">{manual}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
