@@ -5,7 +5,7 @@ import "./loophole.css";
 export const metadata: Metadata = {
   title: "Loophole — Free Code Security Scanner",
   description:
-    "Free zero-dependency security scanner — 61 checks for secrets, injection, XSS and weak crypto in JavaScript, Python, Go and PHP, plus a live Server Guard.",
+    "Free zero-dependency security scanner — 62 checks for secrets, injection, XSS and weak crypto in JavaScript, Python, Go and PHP, plus a live Server Guard.",
   keywords: [
     "loophole",
     "security scanner",
@@ -43,7 +43,7 @@ const appJsonLd = {
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   author: { "@type": "Organization", name: "WebStore Pro", url: "https://frinjo.me" },
   description:
-    "Zero-dependency static security scanner in a single Python file. 61 checks for secrets, injection, XSS and more across JavaScript/TypeScript, Python, Go and PHP — with taint tracking, a fix for every finding, SARIF output and a GitHub Action. Includes Loophole Server Guard for live server protection.",
+    "Zero-dependency static security scanner in a single Python file. 62 checks for secrets, injection, XSS and more across JavaScript/TypeScript, Python, Go and PHP — with taint tracking, a fix for every finding, SARIF output and a GitHub Action. Includes Loophole Server Guard for live server protection.",
 };
 
 const breadcrumbJsonLd = {
@@ -233,7 +233,7 @@ const CATEGORIES: CheckCategory[] = [
 const FAQS: [string, string][] = [
   [
     "What is Loophole?",
-    "Loophole is a free, open-source static security scanner that ships as a single Python file with zero dependencies. It scans JavaScript/TypeScript, Python, Go and PHP codebases with 61 checks — hardcoded secrets, SQL injection, XSS, command injection, weak crypto and more — using taint tracking, and explains why each finding matters and how to fix it.",
+    "Loophole is a free, open-source static security scanner that ships as a single Python file with zero dependencies. It scans JavaScript/TypeScript, Python, Go and PHP codebases with 62 checks — hardcoded secrets, SQL injection, XSS, command injection, weak crypto and more — using taint tracking, and explains why each finding matters and how to fix it.",
   ],
   [
     "How do I install Loophole?",
@@ -289,7 +289,7 @@ export default function LoopholePage() {
           <a className="brand" href="#top">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="https://raw.githubusercontent.com/rootsiemen/loophole/main/assets/logo.png" alt="Loophole logo" />
-            Loophole <span className="ver">v1.1.0</span>
+            Loophole <span className="ver">v1.2.0</span>
           </a>
           <div className="nav-links">
             <a href="#checks">Checks</a>
@@ -745,8 +745,8 @@ export default function LoopholePage() {
             <a className="btn primary" href={GITHUB}>
               Star it on GitHub
             </a>
-            <a className="btn" href="https://github.com/rootsiemen/loophole/releases/tag/v1.1.0">
-              v1.1.0 release notes
+            <a className="btn" href="https://github.com/rootsiemen/loophole/releases/tag/v1.2.0">
+              v1.2.0 release notes
             </a>
           </div>
         </section>
