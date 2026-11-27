@@ -3,7 +3,7 @@ import ChecksGrid, { type CheckCategory } from "./ChecksGrid";
 import "./loophole.css";
 
 export const metadata: Metadata = {
-  title: "Loophole — Free Code Security Scanner",
+  title: { absolute: "Loophole — Free Code Security Scanner" },
   description:
     "Free zero-dependency security scanner — 62 checks for secrets, injection, XSS and weak crypto in JavaScript, Python, Go and PHP, plus a live Server Guard.",
   keywords: [
@@ -20,12 +20,19 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://frinjo.me/loophole" },
   openGraph: {
-    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "WebStore Pro — Frinjo" }],
-    title: "Loophole — Free Code Security Scanner | WebStore Pro",
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "Loophole — Free Code Security Scanner" }],
+    title: "Loophole — Free Code Security Scanner",
     description:
-      "One Python file, zero dependencies: 61 security checks with taint tracking and a fix for every finding — plus Server Guard, live protection for running servers.",
+      "One Python file, zero dependencies: 62 security checks with taint tracking and a fix for every finding — plus Server Guard, live protection for running servers.",
     url: "https://frinjo.me/loophole",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Loophole — Free Code Security Scanner",
+    description:
+      "One Python file, zero dependencies: 62 security checks with taint tracking and a fix for every finding — plus Server Guard, live protection for running servers.",
+    images: ["/og-default.jpg"],
   },
 };
 
@@ -123,8 +130,8 @@ const CHECK_NAMES = [
 const checksJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Loophole — All 61 Security Checks",
-  numberOfItems: 61,
+  name: "Loophole — All 62 Security Checks",
+  numberOfItems: 62,
   itemListElement: CHECK_NAMES.map((name, i) => ({
     "@type": "ListItem",
     position: i + 1,
@@ -283,28 +290,6 @@ export default function LoopholePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(checksJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      {/* In-page brand bar — the Loophole site's own nav, moved over with the page */}
-      <div className="lh-nav">
-        <div className="wrap nav-in">
-          <a className="brand" href="#top">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://raw.githubusercontent.com/rootsiemen/loophole/main/assets/logo.png" alt="Loophole logo" />
-            Loophole <span className="ver">v1.2.0</span>
-          </a>
-          <div className="nav-links">
-            <a href="#checks">Checks</a>
-            <a href="#server-guard">Server Guard</a>
-            <a href="#usage">Usage</a>
-            <a href="#action">GitHub Action</a>
-            <a href="#faq">FAQ</a>
-            <a className="gh-btn" href={GITHUB}>
-              <GhIcon />
-              GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* HERO */}
       <header className="hero">
         <div className="wrap hero-in">
@@ -383,7 +368,7 @@ export default function LoopholePage() {
       <div className="wrap">
         <div className="stats">
           <div className="stat">
-            <div className="n">61</div>
+            <div className="n">62</div>
             <div className="l">security checks</div>
           </div>
           <div className="stat">
@@ -440,20 +425,20 @@ export default function LoopholePage() {
           </div>
         </section>
 
-        {/* THE 61 CHECKS */}
+        {/* THE 62 CHECKS */}
         <section id="checks">
           <div className="sec-head">
             <span className="sec-num">Fig. 02</span>
-            <h2>61 security tools. Zero jargon.</h2>
+            <h2>62 security tools. Zero jargon.</h2>
           </div>
           <p className="lead">
             Every check Loophole runs, explained the way you&apos;d explain it to a friend. Big plain name
             first — the technical code stays small, for those who want it.{" "}
-            <strong>All 61 run together in every scan</strong>; nothing to select or configure.
+            <strong>All 62 run together in every scan</strong>; nothing to select or configure.
           </p>
           <ChecksGrid categories={CATEGORIES} />
           <div className="strip">
-            Every scan runs <b>all 61 tools together</b> — point Loophole at your project, get one report
+            Every scan runs <b>all 62 tools together</b> — point Loophole at your project, get one report
             with a plain-English why and a concrete fix for every finding.
           </div>
         </section>
@@ -514,7 +499,7 @@ export default function LoopholePage() {
               Every incident is stored in SQLite, and a local dashboard shows top attackers, active bans
               and recent incidents. The fake SSH server, fake WordPress and phpMyAdmin logins and fake{" "}
               <span className="mono">.env</span> catch probers red-handed — any touch of a decoy is a HIGH
-              incident. And because it&apos;s Loophole, Server Guard runs the same 61 code checks against
+              incident. And because it&apos;s Loophole, Server Guard runs the same 62 code checks against
               the server&apos;s code on a schedule: new critical or high findings raise the same alarm and
               the same alerts.
             </p>
@@ -745,8 +730,8 @@ export default function LoopholePage() {
             <a className="btn primary" href={GITHUB}>
               Star it on GitHub
             </a>
-            <a className="btn" href="https://github.com/rootsiemen/loophole/releases/tag/v1.2.0">
-              v1.2.0 release notes
+            <a className="btn" href="https://github.com/rootsiemen/loophole/releases/tag/v1.2.2">
+              v1.2.2 release notes
             </a>
           </div>
         </section>

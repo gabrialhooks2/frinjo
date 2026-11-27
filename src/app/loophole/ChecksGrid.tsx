@@ -23,7 +23,7 @@ export interface CheckCategory {
 }
 
 const CHIP_LABELS: Record<string, string> = {
-  all: "All 61 tools",
+  all: "All 62 tools",
   new: "🆕 11 New Tools",
   keys: "🔑 Passwords & Keys",
   db: "🗄️ Database",

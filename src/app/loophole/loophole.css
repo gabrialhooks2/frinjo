@@ -166,3 +166,26 @@
 /* ---------- closing ---------- */
 .lh-root .closing { padding-bottom: 72px; }
 @media (max-width: 820px) { .lh-root .hero h1 { font-size: 2.4rem; } }
+
+/* ---------- standalone footer (Loophole layout) ---------- */
+.lh-root .lh-footer { border-top: 1px solid var(--line); background: var(--bg2); margin-top: 72px; }
+.lh-root .lh-footer-in { display: flex; justify-content: space-between; gap: 40px; padding-top: 40px; padding-bottom: 28px; flex-wrap: wrap; }
+.lh-root .lh-footer-brand { max-width: 420px; }
+.lh-root .lh-footer-brand .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-weight: 700; font-size: 1.05rem; }
+.lh-root .lh-footer-brand .brand img { width: 30px; height: 30px; border-radius: 7px; }
+.lh-root .lh-footer-brand p { color: var(--muted); font-size: .92rem; margin-top: 12px; }
+.lh-root .lh-footer-links { display: flex; flex-direction: column; gap: 10px; }
+.lh-root .lh-footer-links a { color: var(--muted); font-size: .95rem; }
+.lh-root .lh-footer-links a:hover { color: var(--text); text-decoration: none; }
+.lh-root .lh-footer-base { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 18px; padding-bottom: 26px; color: var(--faint); font-size: .85rem; }
+
+/* ---------- doc pages (Terms / Privacy) ---------- */
+.lh-root .lh-doc { max-width: 760px; padding-top: 56px; padding-bottom: 8px; }
+.lh-root .lh-doc h1 { font-size: 2.1rem; line-height: 1.2; letter-spacing: -.02em; }
+.lh-root .lh-doc-meta { color: var(--faint); font-family: var(--mono); font-size: .82rem; margin: 10px 0 28px; }
+.lh-root .lh-doc h2 { font-size: 1.18rem; margin: 34px 0 10px; }
+.lh-root .lh-doc p { color: var(--muted); margin: 0 0 14px; }
+.lh-root .lh-doc p b, .lh-root .lh-doc li b { color: var(--text); }
+.lh-root .lh-doc ul { color: var(--muted); margin: 0 0 14px; padding-left: 22px; }
+.lh-root .lh-doc li { margin-bottom: 8px; }
+.lh-root .lh-doc-back { margin-top: 40px; font-size: .95rem; }
