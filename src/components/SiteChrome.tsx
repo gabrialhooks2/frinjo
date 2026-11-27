@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import ZanderioWidget from "@/components/ZanderioWidget";
 
 /**
  * Site chrome switch: /loophole and its sub-pages (/loophole/terms,
@@ -26,6 +27,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
       <main className="min-h-[70vh]">{children}</main>
       <Footer />
       <WhatsAppFloat />
+      <ZanderioWidget />
     </>
   );
 }
