@@ -70,7 +70,73 @@ async function fetchText(
   }
 }
 
-/* ---------------- robots.txt parsing (ported from botview.py) ---------------- */
+/* ---------------- robots.txt parsing ----------------
+ *
+ * Group semantics follow RFC 9309:
+ *  - A group is one or more consecutive User-Agent lines plus the Allow /
+ *    Disallow rules that follow, up to the next group.
+ *  - When several groups name the same agent, their rules are MERGED.
+ *    (The previous parser stopped at the first matching group, so an
+ *    early "Disallow: /" block — e.g. the boilerplate that Cloudflare's
+ *    Managed robots.txt prepends to a site's file — silently overrode
+ *    the site's own later "Allow: /" group for the same bot.)
+ *  - An agent with no group of its own falls back to the "*" group(s).
+ *  - The verdict is decided for the homepage path "/": among the merged
+ *    rules matching that path, the longest pattern wins, and an
+ *    Allow/Disallow tie goes to Allow (least restrictive, matching
+ *    Google's parser). A sub-path Disallow such as "/api/" therefore
+ *    never reads as a block.
+ */
+
+interface RobotsRule {
+  type: "allow" | "disallow";
+  path: string;
+}
+
+interface RobotsGroup {
+  agents: string[];
+  rules: RobotsRule[];
+  hasRules: boolean;
+}
+
+function parseRobotsGroups(text: string): RobotsGroup[] {
+  const groups: RobotsGroup[] = [];
+  let current: RobotsGroup | null = null;
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.split("#")[0].trim();
+    if (!line || !line.includes(":")) continue;
+    const idx = line.indexOf(":");
+    const k = line.slice(0, idx).trim().toLowerCase();
+    const v = line.slice(idx + 1).trim();
+    if (k === "user-agent") {
+      // A User-Agent line after rules opens a new group; consecutive
+      // User-Agent lines share the group that follows.
+      if (!current || current.hasRules) {
+        current = { agents: [], rules: [], hasRules: false };
+        groups.push(current);
+      }
+      current.agents.push(v.toLowerCase());
+    } else if ((k === "allow" || k === "disallow") && current) {
+      current.hasRules = true;
+      if (v) current.rules.push({ type: k, path: v });
+    }
+    // Any other directive (Sitemap, Content-Signal, Crawl-delay, …) has
+    // no allow/disallow meaning and never breaks a group.
+  }
+  return groups;
+}
+
+/** robots.txt pattern match: "*" is a wildcard, a trailing "$" anchors the end. */
+function robotsPatternMatches(pattern: string, path: string): boolean {
+  const anchored = pattern.endsWith("$");
+  const body = anchored ? pattern.slice(0, -1) : pattern;
+  let re = "^";
+  for (const ch of body) {
+    re += ch === "*" ? ".*" : ch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+  if (anchored) re += "$";
+  return new RegExp(re).test(path);
+}
 
 export function parseRobots(
   text: string | null,
@@ -80,48 +146,27 @@ export function parseRobots(
     for (const b of AI_BOTS) out[b] = "unknown (no robots.txt)";
     return out;
   }
-  // group rules by user-agent block, like the Python version: an agent is
-  // "blocked" when a block naming it (or *) disallows "/".
-  const groups: { agents: string[]; disallowAll: boolean }[] = [];
-  let current: { agents: string[]; disallowAll: boolean } | null = null;
-  let lastWasAgent = false;
-  for (const raw of text.split(/\r?\n/)) {
-    const line = raw.split("#")[0].trim();
-    if (!line || !line.includes(":")) continue;
-    const idx = line.indexOf(":");
-    const k = line.slice(0, idx).trim().toLowerCase();
-    const v = line.slice(idx + 1).trim();
-    if (k === "user-agent") {
-      if (!current || !lastWasAgent) {
-        current = { agents: [], disallowAll: false };
-        groups.push(current);
-      }
-      current.agents.push(v.toLowerCase());
-      lastWasAgent = true;
-    } else {
-      lastWasAgent = false;
-      if (k === "disallow" && v === "/" && current) current.disallowAll = true;
-    }
-  }
+  const groups = parseRobotsGroups(text);
+  const CHECK_PATH = "/";
   for (const bot of AI_BOTS) {
     const b = bot.toLowerCase();
-    let verdict: "allowed" | "blocked" | "not mentioned" = "not mentioned";
-    for (const g of groups) {
-      if (g.agents.includes(b)) {
-        verdict = g.disallowAll ? "blocked" : "allowed";
-        break;
+    // The bot's own group(s) apply; only unlisted bots use the wildcard.
+    let applicable = groups.filter((g) => g.agents.includes(b));
+    if (!applicable.length) applicable = groups.filter((g) => g.agents.includes("*"));
+    let winner: RobotsRule | null = null;
+    for (const g of applicable) {
+      for (const r of g.rules) {
+        if (!robotsPatternMatches(r.path, CHECK_PATH)) continue;
+        if (
+          !winner ||
+          r.path.length > winner.path.length ||
+          (r.path.length === winner.path.length && r.type === "allow")
+        ) {
+          winner = r;
+        }
       }
     }
-    if (verdict === "not mentioned") {
-      const star = groups.find((g) => g.agents.includes("*"));
-      if (star) verdict = star.disallowAll ? "blocked" : "allowed";
-      else verdict = "allowed";
-      // botview.py reports unmentioned bots as "allowed (not blocked)";
-      // we keep that semantics but surface "not mentioned" only for the
-      // table when there is no wildcard group either.
-      if (!star) verdict = "allowed";
-    }
-    out[bot] = verdict;
+    out[bot] = winner?.type === "disallow" ? "blocked" : "allowed";
   }
   return out;
 }
